@@ -1,10 +1,13 @@
-2	2750	2	0.00514
+2 2750 2 0.00519
 RickyHenderson1983
 JimRice1975
 
-
-3	1100	2	0.00007
+3 1100 2 0.00007
 DerekJeter1996
 JimRice1975
 
+3 1100 2 0.00006
+DerekJeter1996
+JimRice1975
 
+Problem skipped

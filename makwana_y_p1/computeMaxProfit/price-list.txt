@@ -5,3 +5,12 @@ RickyHenderson1983 150
 HonusWagner1933 202
 DerekJeter1996 120
 JimRice1975 80
+3 200
+HonusWagner1933 202
+DerekJeter1996 120
+JimRice1975 80
+5 300
+HonusWagner1933 202
+DerekJeter1996 120
+JimRice1975 80
+RickyHenderson1983 150

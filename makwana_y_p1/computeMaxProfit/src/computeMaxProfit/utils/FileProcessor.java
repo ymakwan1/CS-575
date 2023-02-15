@@ -2,6 +2,7 @@ package computeMaxProfit.utils;
 
 import java.io.*;
 import java.util.*;
+import computeMaxProfit.utils.ExceptionHandler;
 
 public class FileProcessor implements FileProcessorI{
 
@@ -53,6 +54,12 @@ public class FileProcessor implements FileProcessorI{
             String priceListLine = _reader.readLine();
             while (priceListLine != null){
                 int numberOfCards = Integer.parseInt(priceListLine.split(" ")[0]);
+
+                if (numberOfCards <= 0) {
+                    ExceptionHandler.handleException(null, "Number of cards for input file  cannot be 0 or negative.");
+                    System.exit(1);
+                }
+
                 int maxMoney = Integer.parseInt(priceListLine.split(" ")[1]);
                 ArrayList<String> data = new ArrayList<>();
                 data.add(String.valueOf(numberOfCards));
@@ -60,6 +67,9 @@ public class FileProcessor implements FileProcessorI{
                 UUID uuid = UUID.randomUUID();
                 for (int i = 0; i < numberOfCards; i++){
                     priceListLine = _reader.readLine();
+                    if (priceListLine == null) {
+                        continue;
+                    }
                     String cardName = priceListLine.split(" ")[0];
                     int cardValue = Integer.parseInt(priceListLine.split(" ")[1]);
                     data.add(cardName);
