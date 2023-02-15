@@ -37,6 +37,8 @@ public class MaxProfit {
         HashMap<String, Integer> marketList = fileProcessor.getMarketPrice();
         HashMap<String, Integer> plList = new HashMap<>();
 
+        boolean checkCardFlag = false;
+
         int noOfCards = Integer.parseInt(valueIn.get(0));
         int maxProfit = 0;
         int maxWeight = Integer.parseInt(valueIn.get(1));
@@ -44,9 +46,19 @@ public class MaxProfit {
         for (int i = 2; i < valueIn.size(); i = i+2) {
             plList.put(valueIn.get(i), Integer.valueOf(valueIn.get(i+1)));
         }
+        for (String key : plList.keySet()) {
+            if (marketList.containsKey(key)) {
+                continue;
+            } else {
+                checkCardFlag = true;
+            }
+        }
         if (noOfCards > plList.size()) {
-            stringBuilder.append("Problem skipped");
-        } else {
+            stringBuilder.append("Problem skipped\n");
+        } else if (checkCardFlag){
+            stringBuilder.append("Problem skipped. Price List does not exist in Market List\n");
+        } 
+        else {
             List<String> selectedNameOfCards = new ArrayList<>();
             List<String> nameOfCards = new ArrayList<>(plList.keySet());
 
