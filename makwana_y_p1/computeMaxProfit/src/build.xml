@@ -1,4 +1,4 @@
-<project name="computeMaProfit" default="compile_all" basedir="..">
+<project name="computeMaxProfit" default="compile_all" basedir="..">
 
   <property name="BUILD.compiler"       value="modern"/>
   <property name="src"                  value="src"/>
