@@ -28,6 +28,10 @@ Description: Compiles your code and generates .class files inside the BUILD fold
 #### Instruction to run:
  **Command: ant -buildfile computeMaxProfit/src/build.xml run -Darg0=-m -Darg1=market-price.txt -Dagr2=-p -Darg3=price-list.txt**
 
+ or the following command if -p file is provided before
+
+ **Command: ant -buildfile computeMaxProfit/src/build.xml run -Darg0=-p -Darg1=price-list.txt -Dagr2=-m -Darg3=market-price.txt**
+
 Format: Input file kind, Input File, Input file kind, Input File
 
 Note : all the input/output files are expected to be at the level of the src/ directory. Example:
