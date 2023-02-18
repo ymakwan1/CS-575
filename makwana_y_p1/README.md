@@ -33,3 +33,5 @@ Format: Input file kind, Input File, Input file kind, Input File
 Note : all the input/output files are expected to be at the level of the src/ directory. Example:
 computeMaxProfit/src
 computeMaxProfit/market-price.txt
+
+-----------------------------------------------------------------------
