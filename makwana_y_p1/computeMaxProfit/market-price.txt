@@ -1,5 +1,5 @@
 4
-HonusWagner1933 2000000
-JimRice1975 1000
-DerekJeter1996 300
-RickyHenderson1983 2000
+HonusWagner1933 5
+JimRice1975 5
+DerekJeter1996 5
+RickyHenderson1983 5
