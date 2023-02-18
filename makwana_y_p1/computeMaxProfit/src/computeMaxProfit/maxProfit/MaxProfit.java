@@ -18,7 +18,7 @@ public class MaxProfit {
     public void extractDataMaxProfit(){
         LinkedHashMap<UUID, List<String>> priceList = fileProcessor.getPriceList();
         priceList.forEach((key, value) -> computeProfit(value));
-        System.out.println(stringBuilder.toString());
+        //System.out.println(stringBuilder.toString());
         try {
             String fileName = System.getProperty("user.dir")+"/"+"output.txt";
             File file =  new File(fileName);
