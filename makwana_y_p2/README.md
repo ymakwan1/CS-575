@@ -11,23 +11,23 @@
 
 -----------------------------------------------------------------------
 ## ANT Commands 
- **Note: build.xml is present in tromino/src folder.**
+ **Note: build.xml is present in trominoTiling/src folder.**
 
  **IMPORTANT! : Run all the following commands from the ~/makwana_y_p2/ directory**
 
 #### Instruction to clean:
 
- **Command: ant -buildfile tromino/src/build.xml clean**
+ **Command: ant -buildfile trominoTiling/src/build.xml clean**
 Description: It cleans up all the .class files that were generated when you
 compiled your code.
 
 #### Instruction to compile:
 
- **Command: ant -buildfile tromino/src/build.xml all**
+ **Command: ant -buildfile trominoTiling/src/build.xml all**
 
 Description: Compiles your code and generates .class files inside the BUILD folder.
 
 #### Instruction to run:
- **Command: ant -buildfile tromino/src/build.xml run**
+ **Command: ant -buildfile trominoTiling/src/build.xml run**
 
 -----------------------------------------------------------------------

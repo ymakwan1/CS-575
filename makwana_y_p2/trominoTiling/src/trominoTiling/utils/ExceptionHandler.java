@@ -1,6 +1,6 @@
-package tromino.utils;
+package trominoTiling.utils;
 
-import tromino.results.ResultsI;
+import trominoTiling.results.Results;
 
 public class ExceptionHandler {
 

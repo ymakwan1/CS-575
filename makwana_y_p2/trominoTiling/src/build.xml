@@ -1,4 +1,4 @@
-<project name="tromino" default="compile_all" basedir="..">
+<project name="trominoTiling" default="compile_all" basedir="..">
 
     <property name="BUILD.compiler"       value="modern"/>
     <property name="src"                  value="src"/>
@@ -8,7 +8,7 @@
     <target name="all" depends="compile_all"/>
   
     <target name="compile_all"
-            depends="tromino"/>
+            depends="trominoTiling"/>
   
     <target name="clean">
          <delete dir="${BUILD}"/>
@@ -22,9 +22,9 @@
   
    <target name="jar">
           <mkdir dir="${BUILD}/jar"/>
-          <jar destfile="${BUILD}/jar/tromino.jar" basedir="${BUILD}/classes">
+          <jar destfile="${BUILD}/jar/trominoTiling.jar" basedir="${BUILD}/classes">
               <manifest>
-                  <attribute name="Main-Class" value="tromino.driver.Driver"/>
+                  <attribute name="Main-Class" value="trominoTiling.driver.Driver"/>
               </manifest>
           </jar>
       </target>
@@ -35,7 +35,7 @@
   
     <target name="tromino" depends="prepare">
       <javac includeantruntime="false" srcdir="${src}"
-                 includes="tromino/**"
+                 includes="trominoTiling/**"
              excludes="**/package.html"
              destdir="${classes}"
              classpath="${classes}"
@@ -45,7 +45,7 @@
     </target>
   
   <target name="run" depends="jar">
-          <java jar="${BUILD}/jar/tromino.jar"  fork="true">
+          <java jar="${BUILD}/jar/trominoTiling.jar"  fork="true">
           </java>	
       </target>
   
