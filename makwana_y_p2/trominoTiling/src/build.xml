@@ -33,7 +33,7 @@
     <!-- * means all files in the current directory -->
     <!-- for just java files use *.java -->
   
-    <target name="tromino" depends="prepare">
+    <target name="trominoTiling" depends="prepare">
       <javac includeantruntime="false" srcdir="${src}"
                  includes="trominoTiling/**"
              excludes="**/package.html"
@@ -47,7 +47,7 @@
   <target name="run" depends="jar">
           <java jar="${BUILD}/jar/trominoTiling.jar"  fork="true">
           </java>	
-      </target>
+</target>
   
   </project>
   

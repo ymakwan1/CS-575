@@ -1,14 +1,17 @@
 package trominoTiling.driver;
-
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import trominoTiling.utils.ExceptionHandler;
+import trominoTiling.tromino.Tromino;
+
 public class Driver{
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException{
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         int board_size;
         System.out.println("Please enter size of board (0 to quit):");
-        board_size = sc.nextInt();
+        board_size = Integer.parseInt(bufferedReader.readLine());//sc.nextInt();
 
         if(board_size == 0){
             System.out.println("Program exiting....");
@@ -18,16 +21,17 @@ public class Driver{
         }
 
         System.out.println("Please enter coordinates of missing square (separate by a space):");
-        String inputString = sc.next();
-        String[] iStrings = inputString.split(" ");
-        int x_missing = iStrings[0];
-        int y_missing = iStrings[1];
+        //String inputString = sc.nextLine();
+        String[] iStrings = bufferedReader.readLine().split(" ");
+        int x_missing = Integer.parseInt(iStrings[0]);
+        int y_missing = Integer.parseInt(iStrings[1]);
 
         if (x_missing < 0 || y_missing < 0) {
             System.out.println("Missing coordinate cannot be negative.");
         }
 
+        Tromino tr = new Tromino(0, 0, x_missing, y_missing, board_size);
         
-        sc.close();
+        //sc.close();
     }
 }

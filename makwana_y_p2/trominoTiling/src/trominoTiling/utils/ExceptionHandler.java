@@ -4,7 +4,7 @@ import trominoTiling.results.Results;
 
 public class ExceptionHandler {
 
-    public static ResultsI errorLogProcessor;
+    public static Results errorLogProcessor;
     public static void handleException(Exception exceptionIn, String errorMessageIn){
         String errorMessage;
         if (errorMessageIn.isEmpty()){
@@ -16,7 +16,7 @@ public class ExceptionHandler {
         String errorString = "EXCEPTION : " + errorMessage;
 
         if (errorLogProcessor != null) {
-            errorLogProcessor.writeToConsole(errorString);
+            //errorLogProcessor.writeToConsole(errorString);
         }else {
             System.out.println(errorString);
         }
