@@ -87,33 +87,83 @@ public class Tromino {
             x_upper_left = x_missingIn;
             y_upper_left = y_missingIn;
             trominoPiece = "LR";
+
+            if (board[x_upper_right][y_upper_right] == null) {
+                board[x_upper_right][y_upper_right] = trominoPiece;
+            }
+
+            if (board[x_lower_left][y_lower_left] == null) {
+                board[x_lower_left][y_lower_left] = trominoPiece;
+            }
+
+            if (board[x_lower_right][y_lower_right] == null) {
+                board[x_lower_right][y_lower_right] = trominoPiece;
+            }
+
         } else if (x_missingIn - x_boardIn < half_size && y_missingIn - y_boardIn >= half_size) {
             x_upper_right = x_missingIn;
             y_upper_right = y_missingIn;
             trominoPiece = "LL";
+
+            if (board[x_upper_left][y_upper_left] == null) {
+                board[x_upper_left][y_upper_left] = trominoPiece;
+            }
+
+            if (board[x_lower_left][y_lower_left] == null) {
+                board[x_lower_left][y_lower_left] = trominoPiece;
+            }
+
+            if (board[x_lower_right][y_lower_right] == null) {
+                board[x_lower_right][y_lower_right] = trominoPiece;
+            }
+
         } else if (x_missingIn - x_boardIn >= half_size && y_missingIn - y_boardIn < half_size) {
             x_lower_left = x_missingIn;
             y_lower_left = y_missingIn;
             trominoPiece = "UR";
+            
+            if (board[x_upper_right][y_upper_right] == null) {
+                board[x_upper_right][y_upper_right] = trominoPiece;
+            }
+
+            if (board[x_upper_left][y_upper_left] == null) {
+                board[x_upper_left][y_upper_left] = trominoPiece;
+            }
+
+            if (board[x_lower_right][y_lower_right] == null) {
+                board[x_lower_right][y_lower_right] = trominoPiece;
+            }
         }
         else if (x_missingIn - x_boardIn >= half_size && y_missingIn - y_boardIn >= half_size) {
             x_lower_right = x_missingIn;
             y_lower_right = y_missingIn;
             trominoPiece = "UL";
+
+            if (board[x_upper_right][y_upper_right] == null) {
+                board[x_upper_right][y_upper_right] = trominoPiece;
+            }
+
+            if (board[x_lower_left][y_lower_left] == null) {
+                board[x_lower_left][y_lower_left] = trominoPiece;
+            }
+
+            if (board[x_upper_left][y_upper_left] == null) {
+                board[x_upper_left][y_upper_left] = trominoPiece;
+            }
         }
 
-        if (board[x_upper_left][y_upper_left] == null) {
-            board[x_upper_left][y_upper_left] = trominoPiece;
-        }
-        if (board[x_upper_right][y_upper_right] == null) {
-            board[x_upper_right][y_upper_right] = trominoPiece;
-        }
-        if (board[x_lower_left][y_lower_left] == null) {
-            board[x_lower_left][y_lower_left] = trominoPiece;
-        }
-        if (board[x_lower_right][y_lower_right] == null) {
-            board[x_lower_right][y_lower_right] = trominoPiece;
-        }
+        // if (board[x_upper_left][y_upper_left] == null) {
+        //     board[x_upper_left][y_upper_left] = trominoPiece;
+        // }
+        // if (board[x_upper_right][y_upper_right] == null) {
+        //     board[x_upper_right][y_upper_right] = trominoPiece;
+        // }
+        // if (board[x_lower_left][y_lower_left] == null) {
+        //     board[x_lower_left][y_lower_left] = trominoPiece;
+        // }
+        // if (board[x_lower_right][y_lower_right] == null) {
+        //     board[x_lower_right][y_lower_right] = trominoPiece;
+        // }
 
         tromino( x_boardIn, y_boardIn, x_upper_left, y_upper_left, half_size );
         tromino( x_boardIn, y_boardIn + half_size, x_upper_right, y_upper_right, half_size);
