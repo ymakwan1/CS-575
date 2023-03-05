@@ -14,7 +14,7 @@ public class Tromino {
         board[x_missing][y_missing]="MS";
         printTromino();
         
-        tromino(x_board, y_board, x_missing, y_missing, board_size);
+        tromino(x_board, y_board, x_missing, y_missing, (int)(Math.pow(2, board_size)));
         System.out.println();
         printTromino();
     }
@@ -60,14 +60,23 @@ public class Tromino {
         if (board_sizeIn == 2){
             trominoPiece = (x_missingIn-x_boardIn) < half_size ? ((y_missingIn-y_boardIn) < half_size ? "LR" : "LL") : ((y_missingIn-y_boardIn)<half_size ? "UR" : "UL");
 
+//            for (int i = x_boardIn; i < x_boardIn + board_sizeIn; i++) {
+//                for (int j = y_boardIn; j < y_boardIn + board_sizeIn; j++) {
+//                    int index = i * board_sizeIn + j;
+//                    if (board[index / board_sizeIn][index % board_sizeIn] == null) {
+//                        board[index / board_sizeIn][index % board_sizeIn] = trominoPiece;
+//                    }
+//                }
+//            }
+
             for (int i = x_boardIn; i < x_boardIn + board_sizeIn; i++) {
                 for (int j = y_boardIn; j < y_boardIn + board_sizeIn; j++) {
-                    int index = i * board_sizeIn + j;
-                    if (board[index / board_sizeIn][index % board_sizeIn] == null) {
-                        board[index / board_sizeIn][index % board_sizeIn] = trominoPiece;
+                    if (i < board.length && j < board.length && board[i][j] == null) {
+                        board[i][j] = trominoPiece;
                     }
                 }
             }
+
             return;
         }
 
