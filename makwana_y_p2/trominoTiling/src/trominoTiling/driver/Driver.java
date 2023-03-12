@@ -30,7 +30,7 @@ public class Driver{
             System.out.println("Missing coordinate cannot be negative.");
         }
 
-        Tromino tr = new Tromino(0, 0, x_missing, y_missing, board_size);
+        Tromino tr = new Tromino(0, 0, ((int)(Math.pow(2, board_size)))- y_missing - 1, x_missing,board_size);
         
         //sc.close();
     }
