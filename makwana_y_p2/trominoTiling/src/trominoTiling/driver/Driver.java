@@ -46,12 +46,26 @@ public class Driver{
         //     ExceptionHandler.handleException(null, "Board size is not a power of two");
         //     System.exit(1);
         // }
-        if ((n & (n - 1)) == 0 && n > 0) {
+        // if ((n & (n - 1)) == 0 && n > 0) {
+        //     return;
+        // } else {
+        //     // n is not a power of 2
+        //     ExceptionHandler.handleException(null, "Board size is not a power of two");
+        //     System.exit(1);
+        // }
+
+        if(n <= 0) {
+            System.out.println("Invalid input. n must be a positive integer.");
             return;
-        } else {
-            // n is not a power of 2
-            ExceptionHandler.handleException(null, "Board size is not a power of two");
-            System.exit(1);
+        }
+        while(n > 1) {
+            if(n % 2 != 0) {
+                //System.out.println("Invalid input. n must be a power of 2.");
+                ExceptionHandler.handleException(null, "Board size is not a power of two");
+                System.exit(1);
+                return;
+            }
+            n = n / 2;
         }
     }
 }
