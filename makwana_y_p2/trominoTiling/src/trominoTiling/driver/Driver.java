@@ -38,14 +38,15 @@ public class Driver{
     }
 
     private static void isPowerOfTwo(int n){
-        // if (board_sizeIn <= 0) {
-        //     ExceptionHandler.handleException(null, "Board size less than 0");
-        //     System.exit(1);
-        // }
-        // else if (!((board_sizeIn & (board_sizeIn - 1)) == 0)) {
-        //     ExceptionHandler.handleException(null, "Board size is not a power of two");
-        //     System.exit(1);
-        // }
+        if (n == 1 || (n & (n - 1)) != 0) {
+            ExceptionHandler.handleException(null, "Board size not a power of 2");
+            System.exit(1);
+        }
+        else {
+            // ExceptionHandler.handleException(null, "Board size is not a power of two");
+            // System.exit(1);
+            return;
+        }
         // if ((n & (n - 1)) == 0 && n > 0) {
         //     return;
         // } else {
@@ -54,18 +55,18 @@ public class Driver{
         //     System.exit(1);
         // }
 
-        if(n <= 0) {
-            System.out.println("Invalid input. n must be a positive integer.");
-            return;
-        }
-        while(n > 1) {
-            if(n % 2 != 0) {
-                //System.out.println("Invalid input. n must be a power of 2.");
-                ExceptionHandler.handleException(null, "Board size is not a power of two");
-                System.exit(1);
-                return;
-            }
-            n = n / 2;
-        }
+        // if(n <= 0) {
+        //     System.out.println("Invalid input. n must be a positive integer.");
+        //     return;
+        // }
+        // while(n > 1) {
+        //     if(n % 2 != 0) {
+        //         //System.out.println("Invalid input. n must be a power of 2.");
+        //         ExceptionHandler.handleException(null, "Board size is not a power of two");
+        //         System.exit(1);
+        //         return;
+        //     }
+        //     n = n / 2;
+        // }
     }
 }
