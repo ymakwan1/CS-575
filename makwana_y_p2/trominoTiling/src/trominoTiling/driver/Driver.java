@@ -20,6 +20,8 @@ public class Driver{
             ExceptionHandler.handleException(null, "Board size cannot be negative.");
         }
 
+        isPowerOfTwo(board_size);
+
         System.out.println("Please enter coordinates of missing square (separate by a space):");
         //String inputString = sc.nextLine();
         String[] iStrings = bufferedReader.readLine().split(" ");
@@ -30,8 +32,26 @@ public class Driver{
             System.out.println("Missing coordinate cannot be negative.");
         }
 
-        Tromino tr = new Tromino(0, 0, ((int)(Math.pow(2, board_size)))- y_missing - 1, x_missing,board_size);
+        Tromino tr = new Tromino(0, 0, board_size - y_missing - 1, x_missing,board_size);
         
         //sc.close();
+    }
+
+    private static void isPowerOfTwo(int n){
+        // if (board_sizeIn <= 0) {
+        //     ExceptionHandler.handleException(null, "Board size less than 0");
+        //     System.exit(1);
+        // }
+        // else if (!((board_sizeIn & (board_sizeIn - 1)) == 0)) {
+        //     ExceptionHandler.handleException(null, "Board size is not a power of two");
+        //     System.exit(1);
+        // }
+        if ((n & (n - 1)) == 0 && n > 0) {
+            return;
+        } else {
+            // n is not a power of 2
+            ExceptionHandler.handleException(null, "Board size is not a power of two");
+            System.exit(1);
+        }
     }
 }

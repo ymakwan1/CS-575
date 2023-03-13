@@ -1,20 +1,26 @@
 package trominoTiling.tromino;
+
+import trominoTiling.utils.ExceptionHandler;
 public class Tromino {
 
     String [][] board;
     int x_missing, y_missing, x_board, y_board, board_size;
     public Tromino(int x_boardIn, int y_boardIn, int x_missingIn, int y_missingIn, int board_sizeIn){
-        board = new String [(int)(Math.pow(2, board_sizeIn))][(int)(Math.pow(2, board_sizeIn))];
+        
         x_board = x_boardIn;
         y_board = y_boardIn;
         x_missing = x_missingIn;
         y_missing = y_missingIn;
         board_size = board_sizeIn;
-        //initializeBoard(x_missing, y_missing);
-        board[x_missing][y_missing]="MS";
-        printTromino();
+
+        //isPowerOfTwo(board_size);
+
+        board = new String [board_size][board_size];
         
-        tromino(x_board, y_board, x_missing, y_missing, (int)(Math.pow(2, board_size)));
+        board[x_missing][y_missing]="MS";
+
+        printTromino();
+        tromino(x_board, y_board, x_missing, y_missing, board_size);
         System.out.println();
         printTromino();
     }
