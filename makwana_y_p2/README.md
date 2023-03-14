@@ -17,6 +17,9 @@
 
 #### Instruction to run:
 
- **Command: make**
-Description: On running the **make** command, it clesns, builds and runs the java files.
+ **Command: make**  
+ Description: On running the **make** command, it clesns, builds and runs the java files.
+
+ $ make
+ 
 -----------------------------------------------------------------------
