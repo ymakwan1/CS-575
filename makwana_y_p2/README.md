@@ -10,8 +10,7 @@
 ## Build System - ant (available on remote.cs already)
 
 -----------------------------------------------------------------------
-## ANT Commands 
- **Note: build.xml is present in trominoTiling/src folder.**
+## Commands and Example 
 
  **IMPORTANT! : Run all the following commands from the ~/makwana_y_p2/ directory**
 
@@ -21,5 +20,5 @@
  Description: On running the **make** command, it clesns, builds and runs the java files.
 
  $ make
- 
+
 -----------------------------------------------------------------------
