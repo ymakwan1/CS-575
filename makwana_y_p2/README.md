@@ -15,19 +15,8 @@
 
  **IMPORTANT! : Run all the following commands from the ~/makwana_y_p2/ directory**
 
-#### Instruction to clean:
-
- **Command: ant -buildfile trominoTiling/src/build.xml clean**
-Description: It cleans up all the .class files that were generated when you
-compiled your code.
-
-#### Instruction to compile:
-
- **Command: ant -buildfile trominoTiling/src/build.xml all**
-
-Description: Compiles your code and generates .class files inside the BUILD folder.
-
 #### Instruction to run:
- **Command: ant -buildfile trominoTiling/src/build.xml run**
 
+ **Command: make**
+Description: On running the **make** command, it clesns, builds and runs the java files.
 -----------------------------------------------------------------------
