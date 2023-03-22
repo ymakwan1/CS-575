@@ -48,6 +48,4 @@
           <java jar="${BUILD}/jar/trominoTiling.jar"  fork="true">
           </java>	
 </target>
-  
-  </project>
-  
+</project>  
