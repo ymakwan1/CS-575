@@ -1,4 +1,4 @@
 package project3.floyds;
-public class Floyds {
+public class Floyds implements FloydsI {
     
 }
