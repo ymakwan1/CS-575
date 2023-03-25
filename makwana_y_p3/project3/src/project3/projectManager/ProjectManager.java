@@ -14,7 +14,10 @@ public class ProjectManager implements ProjectManagerI {
 
     @Override
     public void run() {
+        System.out.println("----------Longest Common Subsequence---------");
         LCSInterface lcs = new LCS(args);
-        FloydsI flyods = new Floyds();
+        System.out.println();
+        System.out.println("----------Floyd's Algorithm---------");
+        FloydsI floyds = new Floyds();
     }
 }
