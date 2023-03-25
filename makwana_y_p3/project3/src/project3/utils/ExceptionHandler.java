@@ -1,8 +1,10 @@
 package project3.utils;
 
+import project3.results.Results;
+
 public class ExceptionHandler {
 
-    //public static Results errorLogProcessor;
+    public static Results errorLogProcessor;
     public static void handleException(Exception exceptionIn, String errorMessageIn){
         String errorMessage;
         if (errorMessageIn.isEmpty()){

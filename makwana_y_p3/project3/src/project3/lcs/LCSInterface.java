@@ -1,6 +1,6 @@
 package project3.lcs;
 
 public interface LCSInterface {
-    void printSubString();
+    String printSubString();
     void generateSubString();
 }
