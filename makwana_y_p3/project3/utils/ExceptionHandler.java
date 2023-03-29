@@ -13,7 +13,7 @@ public class ExceptionHandler {
             errorMessage = errorMessageIn;
         }
 
-        String errorString = "EXCEPTION : " + errorMessage;
+        String errorString = "Error Message : " + errorMessage;
 
         if (errorLogProcessor != null) {
             //errorLogProcessor.writeToConsole(errorString);
