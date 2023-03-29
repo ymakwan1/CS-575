@@ -1,4 +1,5 @@
 run:
-	ant -buildfile project3/src/build.xml clean
-	ant -buildfile project3/src/build.xml all
-	ant -buildfile project3/src/build.xml run -Darg0=AGGTAB -Darg1=GXTXAYB
+	javac project3/driver/Driver.java
+	java project3/driver/Driver AGGTAB GXTXAYB XVXV
+clean:
+	rm -f project3/*/*.class
