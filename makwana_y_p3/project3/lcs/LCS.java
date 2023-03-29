@@ -14,7 +14,7 @@ public class LCS implements LCSInterface{
 
         lcsBoard = new int[lcsString1Length+1][lcsString2Length+1];
         generateSubString();
-        System.out.println(printSubString());
+        System.out.print("Length of LCS : "+lcsBoard[lcsString1Length][lcsString2Length]+"\nLCS : "+printSubString());
     }
 
     @Override

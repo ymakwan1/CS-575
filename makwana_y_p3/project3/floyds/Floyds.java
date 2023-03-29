@@ -100,6 +100,7 @@ public class Floyds implements FloydsI {
                     System.out.println(" (length " + shortestPathFloydsMatrixIn[i][j] + ")");
                 }
             }
+            System.out.println();
         }
     }
 

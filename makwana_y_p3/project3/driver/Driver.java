@@ -5,7 +5,11 @@ public class Driver{
     public static void main(String[] args) {
         System.out.println("**********PROJECT-3**********");
         ProjectManager projectManager = new ProjectManager(args);
-        projectManager.run();
-        
+        if (projectManager.validateInput()) {
+            projectManager.run();
+        } else {
+            System.exit(0);
+        }
+        //projectManager.run();
     }
 }
