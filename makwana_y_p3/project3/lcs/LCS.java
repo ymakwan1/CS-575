@@ -13,13 +13,12 @@ public class LCS implements LCSInterface{
         lcsString2Length = lcsString2.length();
 
         lcsBoard = new int[lcsString1Length+1][lcsString2Length+1];
-        generateSubString();
-        System.out.print("Length of LCS : "+lcsBoard[lcsString1Length][lcsString2Length]+"\nLCS : "+printSubString());
+        //generateSubString();
+        //System.out.print("Length of LCS : "+lcsBoard[lcsString1Length][lcsString2Length]+"\nLCS : "+printSubString());
     }
 
     @Override
     public String printSubString() {
-        int index = lcsBoard[lcsString1Length][lcsString2Length];
         StringBuilder sb = new StringBuilder();
         while (lcsString1Length > 0 && lcsString2Length > 0){
             if (lcsString1.charAt(lcsString1Length-1) == lcsString2.charAt(lcsString2Length-1)){
@@ -36,6 +35,11 @@ public class LCS implements LCSInterface{
     }
 
     @Override
+    public int printSubStringLength(){
+        return lcsBoard[lcsString1Length][lcsString2Length];
+    }
+    
+    @Override
     public void generateSubString() {
         for (int i = 0; i <= lcsString1Length; i++) {
             for (int j = 0; j <= lcsString2Length; j++) {
@@ -48,11 +52,5 @@ public class LCS implements LCSInterface{
                 }
             }
         }
-//        for (int i = 0; i <= lcsString1Length; i++) {
-//            for (int j = 0; j <= lcsString2Length; j++) {
-//                System.out.print(lcsBoard[i][j]+"\t");
-//            }
-//            System.out.println();
-//        }
     }
 }
