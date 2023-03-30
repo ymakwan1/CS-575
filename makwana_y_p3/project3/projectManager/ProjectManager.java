@@ -5,29 +5,48 @@ import project3.floyds.FloydsI;
 import project3.lcs.LCS;
 import project3.lcs.LCSInterface;
 import project3.utils.ExceptionHandler;
+import project3.results.Results;
+import project3.results.ResultsI;
 
+/**
+ * The main class of the project. It is the first class to be called when the program is executed
+ */
 public class ProjectManager implements ProjectManagerI {
-    String[] args;
+    private String[] args;
+    // A constructor. It is called when an object of the class is created.
     public ProjectManager(String[] argsIn) {
         args = argsIn;
     }
 
 
+    
+    /**
+     * The run() function is the main function of the program. It creates an instance of the LCS class,
+     * the Floyds class, and the Results class. It then calls the generateSubString() function from the
+     * LCS class, and the makeFloyd() function from the Floyds class. It then calls the printLCS() and
+     * printFlyods() functions from the Results class
+     */
     @Override
     public void run() {
-        System.out.println("----------Longest Common Subsequence---------");
         LCSInterface lcs = new LCS(args);
+        FloydsI floyds = new Floyds();
+        ResultsI results = new Results(lcs, floyds);
+        System.out.println("----------Longest Common Subsequence---------");
         lcs.generateSubString();
-        System.out.print("Length of LCS : "+lcs.printSubStringLength()+"\n");
-        System.out.print("LCS : "+lcs.printSubString());
+        results.printLCS();
 
         System.out.println();
         System.out.println("\n----------Floyd's Algorithm---------\n");
-        FloydsI floyds = new Floyds();
-        floyds.makeFloyd();
         
+        floyds.makeFloyd();
+        results.printFlyods();
     }
 
+    /**
+     * It checks if the input is valid or not
+     * 
+     * @return The method returns a boolean value.
+     */
     @Override
     public Boolean validateInput(){
         boolean flag = true;

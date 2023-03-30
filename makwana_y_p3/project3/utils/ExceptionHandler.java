@@ -2,9 +2,18 @@ package project3.utils;
 
 import project3.results.Results;
 
+/**
+ * It handles exceptions
+ */
 public class ExceptionHandler {
 
     public static Results errorLogProcessor;
+    /**
+     * It handles exceptions.
+     * 
+     * @param exceptionIn The exception that was thrown.
+     * @param errorMessageIn This is the error message that you want to display.
+     */
     public static void handleException(Exception exceptionIn, String errorMessageIn){
         String errorMessage;
         if (errorMessageIn.isEmpty()){
@@ -27,4 +36,3 @@ public class ExceptionHandler {
         System.exit(1);
     }
 }
-
