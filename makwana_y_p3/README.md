@@ -37,8 +37,8 @@
   ## The output is generated in the following fashion.
 
   # For string less than 2
-  ********** PROJECT-3 **********
-  Error Message : Invalid no. of input. Need 2 strings as input.
+  ********** PROJECT-3 ********** <br>
+  Error Message : Invalid no. of input. Need 2 strings as input. <br>
 
   # For more than 2 strings in input.
   ********** PROJECT-3 **********
