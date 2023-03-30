@@ -1,8 +1,6 @@
 # CS-575
-
 ### Author
 ### Yash Sanjay Makwana - ymakwan1@binghamton.edu
-
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
 ## Programming Language - Java
@@ -12,13 +10,18 @@
  **IMPORTANT! : Run all the following commands from the ~/makwana_y_p3/ directory**
 
 #### Instruction to run:
-**Command: make**  
- Description: On running the **make** command, it cleans, builds and runs the java files.
+** Command: make **  
+ Description: On running the ** make ** command, it cleans & builds the java files.
  
+** Command: make clean **
+Description: On the running the ** make clean ** command, it cleans all the class files.
+
  To test different cases, such as more than 2 inputs, string length more than 100. 
  Use the below examples or edit the command you wish to in Makefile
  
- ## For proper working, use this command in Makefile, you can edit the string to whatever you feel suitable.
+ ## Use any of these commands after you have ran the make command, you can edit the string to whatever you feel suitable.
+
+ ## For normal working 
  java project3/driver/Driver AGGTAB GXTXAYB
  
  ## For string less than 2
@@ -34,21 +37,21 @@
   ## The output is generated in the following fashion.
 
   # For string less than 2
-  **********PROJECT-3**********
+  ********** PROJECT-3 **********
   Error Message : Invalid no. of input. Need 2 strings as input.
 
   # For more than 2 strings in input.
-  **********PROJECT-3**********
+  ********** PROJECT-3 **********
   Error Message : -1 
   Input size more than 2.
 
   # For string length in input more than 100 characters.
-  **********PROJECT-3**********
+  ********** PROJECT-3 **********
   Error Message : -2 
   Input has more than 100 characters.
 
   # Normal working
-  **********PROJECT-3**********
+  ********** PROJECT-3 **********
 
   ----------Longest Common Subsequence---------
   Length of LCS : 4
