@@ -14,7 +14,7 @@
  Description: On running the ** make ** command, it cleans & builds the java files.
  
 ** Command: make clean **
-Description: On the running the ** make clean ** command, it cleans all the class files.
+ Description: On the running the ** make clean ** command, it cleans all the class files.
 
  To test different cases, such as more than 2 inputs, string length more than 100. 
  Use the below examples or edit the command you wish to in Makefile
