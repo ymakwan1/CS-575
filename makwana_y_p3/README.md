@@ -17,8 +17,7 @@
 ** Command: make clean ** <br>
  Description: On the running the ** make clean ** command, it cleans all the class files.
 
- To test different cases, such as more than 2 inputs, string length more than 100. 
- Use the below examples or edit the command you wish to in Makefile
+ ## To test different cases, such as more than 2 inputs, string length more than 100. 
  
  ## Use any of these commands after you have ran the make command, you can edit the string to whatever you feel suitable.
 
