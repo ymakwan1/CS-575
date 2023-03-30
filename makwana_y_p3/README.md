@@ -41,9 +41,9 @@
   Error Message : Invalid no. of input. Need 2 strings as input. <br>
 
   # For more than 2 strings in input.
-  ********** PROJECT-3 **********
-  Error Message : -1 
-  Input size more than 2.
+  ********** PROJECT-3 ********** <br>
+  Error Message : -1 <br>
+  Input size more than 2. <br>
 
   # For string length in input more than 100 characters.
   ********** PROJECT-3 **********
