@@ -46,9 +46,9 @@
   Input size more than 2. <br>
 
   # For string length in input more than 100 characters.
-  ********** PROJECT-3 **********
-  Error Message : -2 
-  Input has more than 100 characters.
+  ********** PROJECT-3 ********** <br>
+  Error Message : -2 <br>
+  Input has more than 100 characters. <br>
 
   # Normal working
   ********** PROJECT-3 **********
@@ -59,12 +59,12 @@
 
   ----------Floyd's Algorithm---------
 
-  ----------Adjacency Matrix---------
-  0       3       5       3       8
-  3       0       8       2       9
-  5       8       0       3       1
-  3       2       3       0       7
-  8       9       1       7       0
+  ----------Adjacency Matrix--------- <br>
+  0       3       5       3       8 <br>
+  3       0       8       2       9 <br>
+  5       8       0       3       1 <br>
+  3       2       3       0       7 <br>
+  8       9       1       7       0 <br>
 
   ----------Shortest Paths Matrix---------
   0       3       5       3       6
