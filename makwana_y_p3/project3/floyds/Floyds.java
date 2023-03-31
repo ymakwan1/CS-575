@@ -20,7 +20,6 @@ public class Floyds implements FloydsI {
         vertices = getRandomNumberInRange(5,10);
         adjacencyMatrix = new int[vertices][vertices];
         shortestPathFloydsMatrix = new int[vertices][vertices];
-        
     }
 
     /**
@@ -32,14 +31,19 @@ public class Floyds implements FloydsI {
         initializePathMatrix();
         createMatrix();
 
-        System.out.println("----------Adjacency Matrix---------");
-        printFloydMatrix(adjacencyMatrix);
+        // System.out.println("----------Adjacency Matrix---------");
+        // printFloydMatrix(adjacencyMatrix);
 
         shortestPathFloydsMatrix = Arrays.copyOf(adjacencyMatrix, adjacencyMatrix.length);
         System.out.println();
-
+        floyd(shortestPathFloydsMatrix);
+        System.out.println("----------Adjacency Matrix---------");
+        printFloydMatrix(shortestPathFloydsMatrix);
+        System.out.println();
         System.out.println("----------Shortest Paths Matrix---------");
-        printFloydMatrix(floyd(shortestPathFloydsMatrix));
+        //printFloydMatrix(floyd(shortestPathFloydsMatrix));
+        
+        printFloydMatrixP(path);
 
         // System.out.println();
         // System.out.println("----------All Pair Shortest Paths---------");
@@ -108,6 +112,15 @@ public class Floyds implements FloydsI {
         }
     }
 
+    private void printFloydMatrixP(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print((matrix[i][j]+1)+"\t");
+            }
+            System.out.println();
+        }
+    }
+
     /**
      * For each vertex k, for each pair of vertices (i, j), if the path from i to k to j is shorter
      * than the current shortest path from i to j, update the shortest path from i to j to be the path
@@ -117,7 +130,8 @@ public class Floyds implements FloydsI {
      * each pair of vertices.
      * @return The shortest path between two nodes.
      */
-    private int[][] floyd(int[][] shortestPathFloydsMatrixIn) {
+    //private int[][] floyd(int[][] shortestPathFloydsMatrixIn) 
+    private void floyd(int[][] shortestPathFloydsMatrixIn){
 
         for (int k = 0; k < shortestPathFloydsMatrixIn.length; k++) {
             for (int i = 0; i < shortestPathFloydsMatrixIn.length; i++) {
@@ -129,7 +143,7 @@ public class Floyds implements FloydsI {
                 }
             }
         }
-        return shortestPathFloydsMatrixIn;
+        //return shortestPathFloydsMatrixIn;
     }
 
     /**
