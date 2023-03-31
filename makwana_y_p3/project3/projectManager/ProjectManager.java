@@ -17,29 +17,37 @@ public class ProjectManager implements ProjectManagerI {
     public ProjectManager(String[] argsIn) {
         args = argsIn;
     }
+    
+    public ProjectManager(){
+
+    }
 
 
     
     /**
-     * The run() function is the main function of the program. It creates an instance of the LCS class,
-     * the Floyds class, and the Results class. It then calls the generateSubString() function from the
-     * LCS class, and the makeFloyd() function from the Floyds class. It then calls the printLCS() and
-     * printFlyods() functions from the Results class
+     * This function runs the Floyd's algorithm and prints the results
      */
     @Override
-    public void run() {
-        LCSInterface lcs = new LCS(args);
+    public void runFloyds(){
         FloydsI floyds = new Floyds();
-        ResultsI results = new Results(lcs, floyds);
+        ResultsI results = new Results();
+        System.out.println("\n----------Floyd's Algorithm---------\n");
+        floyds.makeFloyd();
+        results.printFlyods(floyds);
+    }
+
+    /**
+     * The function runLCS() is called from the main function in the Driver class. It creates an object
+     * of the LCS class and calls the generateSubString() function to generate the longest common
+     * subsequence. The results are then printed using the printLCS() function
+     */
+    @Override
+    public void runLCS() {
+        LCSInterface lcs = new LCS(args);
+        ResultsI results = new Results();
         System.out.println("----------Longest Common Subsequence---------");
         lcs.generateSubString();
-        results.printLCS();
-
-        System.out.println();
-        System.out.println("\n----------Floyd's Algorithm---------\n");
-        
-        floyds.makeFloyd();
-        results.printFlyods();
+        results.printLCS(lcs);
     }
 
     /**

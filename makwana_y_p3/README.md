@@ -17,21 +17,15 @@
 ** Command: make clean ** <br>
  Description: On the running the ** make clean ** command, it cleans all the class files.
 
- ## To test different cases, such as more than 2 inputs, string length more than 100. 
+ ## Use any of these commands after you have ran the make command.
+
+ ## For Longest Common Subsequence
+
+  java project3/lcs/LCSDriver argument1 argument2
  
- ## Use any of these commands after you have ran the make command, you can edit the string to whatever you feel suitable.
+ ## For Floyd's Algorithm
 
- ## For normal working 
- java project3/driver/Driver AGGTAB GXTXAYB
- 
- ## For string less than 2
- java project3/driver/Driver AGGTAB
-
- ## For more than 2 strings in input.
- java project3/driver/Driver AGGTAB GXTXAYB XAXAXA
-
- ## For string length in input more than 100 characters.
- java project3/driver/Driver AGGTAB ACGTTCGGCCTCTGAGGCTAGTCGACAGATCTTCTCGGATCCGACTAGGTACCTTCTAGGATTCACAGGTGCTAGCTGACTAGCTACCTTGAGTAGTCTCTA
+  java project3/floyds/FloydsDriver
  
  -----------------------------------------------------------------------
   ## The output is generated in the following fashion.
@@ -50,13 +44,12 @@
   Error Message : -2 <br>
   Input has more than 100 characters. <br>
 
-  # Normal working
+  # Normal working for LCS
   ********** PROJECT-3 **********
-
-  ----------Longest Common Subsequence--------- <br>
   Length of LCS : 4 <br>
   LCS : GTAB <br>
 
+  # Normal working for Floyds
   ----------Floyd's Algorithm---------
 
   ----------Adjacency Matrix--------- <br>

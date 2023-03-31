@@ -31,23 +31,16 @@ public class Floyds implements FloydsI {
         initializePathMatrix();
         createMatrix();
 
-        // System.out.println("----------Adjacency Matrix---------");
-        // printFloydMatrix(adjacencyMatrix);
+        System.out.println("----------Adjacency Matrix---------");
+        printFloydMatrix(adjacencyMatrix);
 
         shortestPathFloydsMatrix = Arrays.copyOf(adjacencyMatrix, adjacencyMatrix.length);
         System.out.println();
         floyd(shortestPathFloydsMatrix);
-        System.out.println("----------Adjacency Matrix---------");
-        printFloydMatrix(shortestPathFloydsMatrix);
+        
         System.out.println();
         System.out.println("----------Shortest Paths Matrix---------");
-        //printFloydMatrix(floyd(shortestPathFloydsMatrix));
-        
         printFloydMatrixP(path);
-
-        // System.out.println();
-        // System.out.println("----------All Pair Shortest Paths---------");
-        // printAllPairShortestPaths(path, shortestPathFloydsMatrix);
     }
 
     @Override

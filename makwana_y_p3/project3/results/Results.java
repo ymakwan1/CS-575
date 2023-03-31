@@ -1,6 +1,5 @@
 package project3.results;
 
-import project3.floyds.Floyds;
 import project3.floyds.FloydsI;
 import project3.lcs.LCSInterface;
 
@@ -13,27 +12,31 @@ import project3.lcs.LCSInterface;
 public class Results implements ResultsI{
     LCSInterface lcs;
     FloydsI floyds;
-
-    // A constructor that takes in two interfaces and sets them to the class variables.
-    public Results(LCSInterface lcsIn, FloydsI floydsIn){
-        lcs = lcsIn;
-        floyds = floydsIn;
+    
+    public Results(){
+        
     }
 
+    
     /**
-     * The function prints the length of the LCS and the LCS itself
+     * This function prints the length of the LCS and the LCS itself
+     * 
+     * @param lcsIn The LCSInterface object that contains the LCS information.
      */
     @Override
-    public void printLCS() {
-        System.out.print("Length of LCS : "+lcs.printSubStringLength()+"\n");
-        System.out.print("LCS : "+lcs.printSubString());
+    public void printLCS(LCSInterface lcsIn) {
+        System.out.print("Length of LCS : "+lcsIn.printSubStringLength()+"\n");
+        System.out.print("LCS : "+lcsIn.printSubString()+"\n");
     }
 
+    
     /**
-     * This function prints the Floyd's shortest path
+     * This function prints the floyd's triangle.
+     * 
+     * @param floydsIn The FloydsI object that will be printed.
      */
     @Override
-    public void printFlyods() {
-        floyds.printFloyd();
+    public void printFlyods(FloydsI floydsIn) {
+        floydsIn.printFloyd();
     }
 }
