@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CS-575.iml" filepath="$PROJECT_DIR$/CS-575.iml" />
+      <module fileurl="file://$PROJECT_DIR$/makwana_y_p4/project4/kruskals/kruskals.iml" filepath="$PROJECT_DIR$/makwana_y_p4/project4/kruskals/kruskals.iml" />
+      <module fileurl="file://$PROJECT_DIR$/makwana_y_p1/makwana_y_p1.iml" filepath="$PROJECT_DIR$/makwana_y_p1/makwana_y_p1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/makwana_y_p2/makwana_y_p2.iml" filepath="$PROJECT_DIR$/makwana_y_p2/makwana_y_p2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/makwana_y_p4/makwana_y_p4.iml" filepath="$PROJECT_DIR$/makwana_y_p4/makwana_y_p4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/makwana_y_p4/project4/prims/prims.iml" filepath="$PROJECT_DIR$/makwana_y_p4/project4/prims/prims.iml" />
+      <module fileurl="file://$PROJECT_DIR$/makwana_y_p4/project4/project4.iml" filepath="$PROJECT_DIR$/makwana_y_p4/project4/project4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/makwana_y_p4/project4/projectManager/projectManager.iml" filepath="$PROJECT_DIR$/makwana_y_p4/project4/projectManager/projectManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/makwana_y_p4/project4/results/results.iml" filepath="$PROJECT_DIR$/makwana_y_p4/project4/results/results.iml" />
+      <module fileurl="file://$PROJECT_DIR$/makwana_y_p4/project4/utils/utils.iml" filepath="$PROJECT_DIR$/makwana_y_p4/project4/utils/utils.iml" />
+    </modules>
+  </component>
+</project>
