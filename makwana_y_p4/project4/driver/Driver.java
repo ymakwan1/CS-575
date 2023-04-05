@@ -13,14 +13,11 @@ public class Driver {
             ProjectManagerI projectManager = new ProjectManager();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-            int vertices = projectManager.generateRandomVertex(5, 10);
-            System.out.println("Randomly selected "+vertices+" vertices.");
-            
-            projectManager.printRandomGraph();
+            projectManager.run();
 
-            System.out.print("Enter 1 for Prims and 2 for Kruskals : ");
-            int algoInput = bufferedReader.read();
-
+            System.out.print("\nEnter 1 for Prims and 2 for Kruskals : \n");
+            int algoInput = Integer.parseInt(bufferedReader.readLine());
+            //int algoInput = 1;
             if (algoInput == 1) {
                 projectManager.runPrims();
             } else if (algoInput == 2) {
@@ -30,7 +27,7 @@ public class Driver {
             }
 
         } catch (Exception e) {
-            ExceptionHandler.handleException(e, "IO Exception occured.\nPlease enter input as instructed.");
+            ExceptionHandler.handleException(e, "IO Exception occurred.\nPlease enter input as instructed.");
         }
         
     }
