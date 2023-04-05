@@ -42,18 +42,18 @@ public class ProjectManager implements ProjectManagerI{
 
     @Override
     public void runKruskals(){
-        int[][] A = {{0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
-                {1, 0, 1, 0, 0, 0, 0, 0, 0, 1},
-                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 1, 2},
-                {0, 0, 0, 0, 0, 0, 1, 0, 0, 2},
-                {0, 0, 0, 0, 0, 1, 0, 1, 0, 0},
-                {0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
-                {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-                {0, 1, 0, 0, 2, 2, 0, 0, 0, 0}};
-        KruskalI kruskals = new Kruskals(10, A);
-        //KruskalI kruskals = new Kruskals(vertices, randomGraph);
+        // int[][] A = {{0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+        //         {1, 0, 1, 0, 0, 0, 0, 0, 0, 1},
+        //         {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+        //         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        //         {0, 0, 0, 0, 0, 0, 0, 0, 1, 2},
+        //         {0, 0, 0, 0, 0, 0, 1, 0, 0, 2},
+        //         {0, 0, 0, 0, 0, 1, 0, 1, 0, 0},
+        //         {0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+        //         {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+        //         {0, 1, 0, 0, 2, 2, 0, 0, 0, 0}};
+        // KruskalI kruskals = new Kruskals(10, A);
+        KruskalI kruskals = new Kruskals(vertices, randomGraph);
         kruskals.initializeSetandHeight();
         kruskals.initializeEdges();
         kruskals.generateKruskalMST();
