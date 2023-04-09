@@ -11,6 +11,7 @@ public class Kruskals implements KruskalI{
     private int[] Set;
     private int[] height;
     private int[][] kruskalsGraph;
+    private int[][] kruskalsMatrix;
     private List<int[]> edges = new ArrayList<int[]>();
     private List<int[]> MST = new ArrayList<int[]>();
     public Kruskals(int verticesIn, int[][] kruskalsGraphIn){
@@ -18,6 +19,7 @@ public class Kruskals implements KruskalI{
         kruskalsGraph = kruskalsGraphIn;
         Set = new int[vertices];
         height = new int[vertices];
+        kruskalsMatrix = new int[vertices][vertices];
     }
     @Override
     public void generateKruskalMST() {
@@ -37,10 +39,25 @@ public class Kruskals implements KruskalI{
                 break;
             }
         }
+        for (int[] edge : MST) {
+            int u = edge[0];
+            int v = edge[1];
+            int w = edge[2];
+            kruskalsMatrix[u][v] = w;
+            kruskalsMatrix[v][u] = w;
+        }
     }
 
     @Override
     public void printKruskals() {
+        
+        System.out.println("Kruskal's matrix:");
+        for (int i = 0; i < vertices; i++) {
+            for (int j = 0; j < vertices; j++) {
+                System.out.print(" " + kruskalsMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
         System.out.println("Kruskal's MST");
         for (int[] edge: MST) {
             System.out.println("V" + (edge[0]+1) + "-V" + (edge[1]+1) + ": " + edge[2]);
@@ -66,12 +83,12 @@ public class Kruskals implements KruskalI{
                 }
             }
         }
-//        Collections.sort(edges, new Comparator<int[]>() {
-//            @Override
-//            public int compare(int[] o1, int[] o2) {
-//                return o1[2] - o2[2];
-//            }
-//        });
+       Collections.sort(edges, new Comparator<int[]>() {
+           @Override
+           public int compare(int[] o1, int[] o2) {
+               return o1[2] - o2[2];
+           }
+       });
     }
 
     @Override
