@@ -6,59 +6,62 @@ import project4.prims.PrimsI;
 import project4.prims.Prims;
 import project4.kruskals.KruskalI;
 import project4.kruskals.Kruskals;
-import project4.results.Results;
-import project4.results.ResultsI;
-import project4.utils.ExceptionHandler;
 
+
+/**
+ * The ProjectManager class generates a random graph with a random number of vertices and runs Prim's
+ * and Kruskal's algorithms on it to find the minimum spanning tree.
+ */
 public class ProjectManager implements ProjectManagerI{
     int[][] randomGraph;
     int vertices;
+
     public ProjectManager(){
 
     }
 
+    /**
+     * This function generates a random graph with a random number of vertices and prints it.
+     */
     @Override
     public void run(){
         System.out.println("Randomly selected "+generateRandomVertex(5, 10)+" vertices.");
         generateRandomGraph();
         printRandomGraph();
     }
+
+    /**
+     * This function runs Prim's algorithm on a given graph and prints the resulting minimum spanning
+     * tree.
+     */
     @Override
     public void runPrims(){
         PrimsI prims = new Prims(vertices, randomGraph);
-//        int[][] adjacencyMatrix = {
-//                {0, 5, 8, 7, 9},
-//                {5, 0, 2, 8, 6},
-//                {8, 2, 0, 7, 7},
-//                {7, 8, 7, 0, 6},
-//                {9, 6, 7, 6, 0}
-//        };
-//
-//        PrimsI prims = new Prims(5, adjacencyMatrix);
         prims.generateMST();
         prims.printPrimsGraph();
         prims.printMST();
     }
 
+    
+    /* 
+    * This method is running the Kruskal's algorithm on the randomly generated graph. It creates an
+    * instance of the `Kruskals` class with the number of vertices and the random graph as parameters.
+    * It then initializes the set and height of each vertex, initializes the edges of the graph,
+    * generates the minimum spanning tree using Kruskal's algorithm, and finally prints the minimum
+    * spanning tree.
+    */
     @Override
     public void runKruskals(){
-        // int[][] A = {{0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
-        //         {1, 0, 1, 0, 0, 0, 0, 0, 0, 1},
-        //         {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-        //         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        //         {0, 0, 0, 0, 0, 0, 0, 0, 1, 2},
-        //         {0, 0, 0, 0, 0, 0, 1, 0, 0, 2},
-        //         {0, 0, 0, 0, 0, 1, 0, 1, 0, 0},
-        //         {0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
-        //         {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-        //         {0, 1, 0, 0, 2, 2, 0, 0, 0, 0}};
-        // KruskalI kruskals = new Kruskals(10, A);
         KruskalI kruskals = new Kruskals(vertices, randomGraph);
         kruskals.initializeSetandHeight();
         kruskals.initializeEdges();
         kruskals.generateKruskalMST();
         kruskals.printKruskals();
     }
+
+    /**
+     * This Java function generates a random graph with weights between 1 and 10 for each edge.
+     */
     @Override
     public void generateRandomGraph(){
         randomGraph = new int[vertices][vertices];
@@ -70,6 +73,15 @@ public class ProjectManager implements ProjectManagerI{
             }
         }
     }
+
+    /**
+     * This Java function generates a random integer between a given minimum and maximum value.
+     * 
+     * @param min The minimum value that the generated random vertex can have.
+     * @param max The maximum value that the generated random vertex can have.
+     * @return The method is returning an integer value which is the randomly generated vertex between
+     * the minimum and maximum values provided as parameters.
+     */
     @Override
     public int generateRandomVertex(int min, int max){
         Random random = new Random();
@@ -78,6 +90,11 @@ public class ProjectManager implements ProjectManagerI{
     }
 
     @Override
+    /*
+    * This method generates a random integer weight between the minimum and maximum values (inclusive)
+    * specified as parameters using the `Random` class in Java. 
+    * @return the generated weight as an integer.
+    */
     public int generateRandomWeight(int min, int max) {
         Random random = new Random();
         return random.nextInt((max-min)+1)+min;
