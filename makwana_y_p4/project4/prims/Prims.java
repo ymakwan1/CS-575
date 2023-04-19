@@ -46,6 +46,9 @@ public class Prims implements PrimsI{
 
         while (!priorityQueue.isEmpty()){
             int u = priorityQueue.poll().vertex;
+            if(visited[u]){
+                continue;
+            }
             visited[u] = true;
             for (int v = 0; v < vertices; v++) {
                 if (primsGraph[u][v] != 0 && visited[v]==false && primsGraph[u][v] < cost[v]){
@@ -55,7 +58,7 @@ public class Prims implements PrimsI{
                 }
             }
         }
-
+    
         for (int i = 1; i < vertices; i++) {
             primMST[mst[i]][i] = primsGraph[i][mst[i]];
             primMST[i][mst[i]] = primsGraph[i][mst[i]];
@@ -74,7 +77,7 @@ public class Prims implements PrimsI{
             vertex = vertexIn;
             key = keyIn;
         }
-
+        
         @Override
         public int compareTo(MSTNode otherNode) {
             return Integer.compare(key, otherNode.key);
