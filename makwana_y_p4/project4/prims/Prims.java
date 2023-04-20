@@ -3,24 +3,22 @@ package project4.prims;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
+
 /**
- * The Prims class implements Prim's algorithm to generate a minimum spanning tree for a given graph
- * and provides methods to print the MST and Prim's matrix.
+ * The `Prims` class is a Java implementation of Prim's algorithm for generating a minimum spanning
+ * tree of a graph.
  */
 public class Prims implements PrimsI{
     private int vertices;
     private int [][] primsGraph;
-    private int [] mst;
     private int [] cost;
     private boolean [] visited;
-    int[][] primMST;
+    private int[][] primMST;
+    private StringBuilder stringBuilder = new StringBuilder();
 
-    /*  
-    * This is a constructor for the Prims class that takes in the number of vertices and a 2D array
-    * representing the graph. It initializes the instance variables vertices and primsGraph with the
-    * input parameters, and creates a new 2D array primMST with the same number of vertices as the
-    * input graph.
-    */
+    // This is a constructor for the `Prims` class that takes in the number of vertices and a 2D array
+    // representing the graph. It initializes the `vertices` and `primsGraph` variables with the input
+    // values, and creates a new 2D array `primMST` with the same number of vertices.
     public Prims(int verticesIn, int[][] primsGraphIn){
         vertices = verticesIn;
         primsGraph = primsGraphIn;
@@ -28,61 +26,67 @@ public class Prims implements PrimsI{
     }
 
     /**
-     * This function generates a minimum spanning tree using Prim's algorithm.
+     * The function generates a minimum spanning tree using Prim's algorithm.
      */
     @Override
     public void generateMST() {
-        mst = new int[vertices];
         cost = new int[vertices];
         visited = new boolean[vertices];
 
         Arrays.fill(cost, Integer.MAX_VALUE);
         Arrays.fill(visited, false);
 
-        PriorityQueue<MSTNode> priorityQueue = new PriorityQueue<MSTNode>();
-        priorityQueue.add(new MSTNode(0, 0));
+        PriorityQueue<MSTNode> priorityQueue = new PriorityQueue<>();
+        priorityQueue.add(new MSTNode(0, 0, 0));
 
         cost[0] = 0;
 
         while (!priorityQueue.isEmpty()){
-            int u = priorityQueue.poll().vertex;
-            if(visited[u]){
+
+            int nodeSource = priorityQueue.peek().source;
+            int nodeDestination = priorityQueue.peek().destination;
+            int nodeWeight = priorityQueue.peek().weight;
+            priorityQueue.remove();
+
+            if(visited[nodeDestination]){
                 continue;
             }
-            visited[u] = true;
-            for (int v = 0; v < vertices; v++) {
-                if (primsGraph[u][v] != 0 && visited[v]==false && primsGraph[u][v] < cost[v]){
-                    cost[v] = primsGraph[u][v];
-                    mst[v] = u;
-                    priorityQueue.add(new MSTNode(v, cost[v]));
+            visited[nodeDestination] = true;
+
+            if (nodeWeight != 0) {
+                stringBuilder.append("V"+(nodeSource+1)+"- V" + (nodeDestination+1)+": \t"+nodeWeight).append("\n");
+                primMST[nodeSource][nodeDestination] = nodeWeight;
+                primMST[nodeDestination][nodeSource] = nodeWeight;
+            }
+
+            for (int index = 0; index < vertices; index++) {
+                int edgeWeight = primsGraph[nodeDestination][index];
+                if (visited[index] == false) {
+                    priorityQueue.add(new MSTNode(nodeDestination, index, edgeWeight));
                 }
             }
-        }
-    
-        for (int i = 1; i < vertices; i++) {
-            primMST[mst[i]][i] = primsGraph[i][mst[i]];
-            primMST[i][mst[i]] = primsGraph[i][mst[i]];
         }
     }
 
     /**
-     * The MSTNode class is a Java implementation of a node used in a minimum spanning tree algorithm,
-     * with a vertex and key value, and a compareTo method for comparing nodes based on their key
-     * values.
+     * The MSTNode class represents a node in a minimum spanning tree and implements the Comparable
+     * interface to compare nodes based on their weights.
      */
     private static class MSTNode implements Comparable<MSTNode> {
-        int vertex;
-        int key;
-        public MSTNode(int vertexIn, int keyIn){
-            vertex = vertexIn;
-            key = keyIn;
+        int source;
+        int destination;
+        int weight;
+        public MSTNode(int sourceIn, int destinationIn, int weightIn){
+            source = sourceIn;
+            destination = destinationIn;
+            weight = weightIn;
         }
-        
         @Override
-        public int compareTo(MSTNode otherNode) {
-            return Integer.compare(key, otherNode.key);
+        public int compareTo(MSTNode other) {
+            return Integer.compare(this.weight, other.weight);
         }
     }
+
     /**
      * This function prints out the Prim's matrix for a given graph.
      */
@@ -95,14 +99,13 @@ public class Prims implements PrimsI{
             System.out.println();
         }
     }
+
     /**
-     * This function prints the minimum spanning tree (MST) of a graph using Prim's algorithm.
+     * This function prints the minimum spanning tree using Prim's algorithm.
      */
     @Override
     public void printMST() {
         System.out.println("\nPrim's MST:");
-        for (int i = 1; i < vertices; i++) {
-            System.out.printf("V%d-V%d: %d\n", mst[i] + 1, i + 1, primsGraph[i][mst[i]]);
-        }
+        System.out.println(stringBuilder.toString());
     }
 }

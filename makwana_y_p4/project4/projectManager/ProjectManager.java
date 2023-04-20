@@ -25,6 +25,7 @@ public class ProjectManager implements ProjectManagerI{
      */
     @Override
     public void run(){
+        System.out.println("*********** PROJECT 4 ***********");
         System.out.println("Randomly selected "+generateRandomVertex(5, 10)+" vertices.");
         generateRandomGraph();
         printRandomGraph();

@@ -42,7 +42,6 @@ public class Kruskals implements KruskalI{
         for (int[] edge : edges) {
             int u = edge[0];
             int v = edge[1];
-            int w = edge[2];
             int ucomp = find3(u);
             int vcomp = find3(v);
             if (ucomp != vcomp) {
