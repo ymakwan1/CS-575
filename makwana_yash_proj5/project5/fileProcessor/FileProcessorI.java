@@ -6,5 +6,5 @@ public interface FileProcessorI {
     int[] getWeights();
     int getCapacity();
     int getNumberOfItems();
-    void writeToFile(StringBuilder stringBuilder);
+    void writeToFile(StringBuilder stringBuilder, String outputFile);
 }

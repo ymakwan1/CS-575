@@ -64,9 +64,9 @@ public class FileProcessor implements FileProcessorI{
     }
 
     @Override
-    public void writeToFile(StringBuilder stringBuilderIn) {
+    public void writeToFile(StringBuilder stringBuilderIn, String outputFileIn) {
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("output1.txt"));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outputFileIn));
             bufferedWriter.write(stringBuilderIn.toString().trim());
             bufferedWriter.close();
         } catch (Exception e) {

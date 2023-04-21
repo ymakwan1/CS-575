@@ -55,6 +55,6 @@ public class BruteForce implements BruteForceI{
 
     @Override
     public void writeToFile() {
-        fileProcessor.writeToFile(stringBuilder);
+        fileProcessor.writeToFile(stringBuilder, "output1.txt");
     }
 }

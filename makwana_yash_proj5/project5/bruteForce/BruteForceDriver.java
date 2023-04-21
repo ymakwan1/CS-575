@@ -9,7 +9,7 @@ import project5.utils.ExceptionHandler;
 public class BruteForceDriver {
     public static void main(String[] args) {
         if (args.length < 1) {
-            ExceptionHandler.handleException(null, "Usage : java project5/bruteForce/BruteForce knapsack01.txt");
+            ExceptionHandler.handleException(null, "Usage : java project5/bruteForce/BruteForceDriver knapsack01.txt");
         }
 
         String relativePathCheck = args[0];
