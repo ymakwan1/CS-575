@@ -5,7 +5,7 @@ import java.util.Random;
 
 import project5.utils.ExceptionHandler;
 
-public class CreateKnapsackProblem {
+public class CreateKP {
     public static void main(String[] args) {
         if (args.length < 1) {
             ExceptionHandler.handleException(null, "Usage: java project5/createFile/CreateKnapsackProblem <output_file.txt>");
