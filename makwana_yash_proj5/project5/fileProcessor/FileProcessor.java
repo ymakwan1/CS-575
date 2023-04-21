@@ -1,7 +1,9 @@
 package project5.fileProcessor;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 import project5.utils.ExceptionHandler;
 
@@ -28,7 +30,8 @@ public class FileProcessor implements FileProcessorI{
             profit = new int[numberOfItems];
 
             for (int i = 0; i < numberOfItems; i++) {
-                String[] parts = bufferedReader.readLine().split(" ");
+                String itemsLine = bufferedReader.readLine();;
+                String[] parts = itemsLine.split(" ");
                 profit[i] = Integer.parseInt(parts[1]);
                 weights[i] = Integer.parseInt(parts[2]);
             }
@@ -59,5 +62,15 @@ public class FileProcessor implements FileProcessorI{
     public int getNumberOfItems() {
      return numberOfItems;
     }
-    
+
+    @Override
+    public void writeToFile(StringBuilder stringBuilderIn) {
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("output1.txt"));
+            bufferedWriter.write(stringBuilderIn.toString().trim());
+            bufferedWriter.close();
+        } catch (Exception e) {
+            ExceptionHandler.handleException(e, "Error writing file.");
+        }
+    }
 }

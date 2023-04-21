@@ -27,7 +27,12 @@ public class CreateKP {
             FileWriter fileWriter = new FileWriter(knapSackProblemFile);
             fileWriter.write(numberOfItems+" "+capacity+"\n");
             for (int index = 0; index < numberOfItems; index++) {
-                fileWriter.write(String.format("Item%d  %d  %d\n", index+1, profit[index], weights[index]));
+                String line = String.format("Item%d %d %d", index + 1, profit[index], weights[index]);
+                if (index == numberOfItems - 1) {
+                    fileWriter.write(line);
+                } else {
+                    fileWriter.write(line + "\n");
+                }
             }
             fileWriter.close();
         } catch (Exception e) {

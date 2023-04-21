@@ -12,7 +12,7 @@ public class BruteForceDriver {
             ExceptionHandler.handleException(null, "Usage : java project5/bruteForce/BruteForce knapsack01.txt");
         }
 
-        String relativePathCheck = "makwana_yash_proj5/"+args[0];
+        String relativePathCheck = args[0];
         File file = new File(relativePathCheck);
         if (!file.exists()) {
             ExceptionHandler.handleException(null, "File does not exist");
