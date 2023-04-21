@@ -1,5 +1,5 @@
 package project5.projectManager;
 
-public interface projectManagerI {
-    
+public interface ProjectManagerI {
+    void runBruteForce();
 }
