@@ -27,7 +27,7 @@ public class Driver {
 
             projectManager.run();
 
-            System.out.print("\nEnter 1 for Prims and 2 for Kruskals : \n");
+            System.out.print("\nEnter 1 for Prims or 2 for Kruskals : \n");
             int algoInput = Integer.parseInt(bufferedReader.readLine());
             if (algoInput == 1) {
                 projectManager.runPrims();
