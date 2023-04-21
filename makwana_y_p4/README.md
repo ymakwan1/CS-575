@@ -7,7 +7,7 @@
 -----------------------------------------------------------------------
 ## Commands and Example 
 
- **IMPORTANT! : Run all the following commands from the ~/makwana_y_p4/ directory**
+ **IMPORTANT! : Run all the following commands from the ~/makwana_yash_proj4/ directory**
 
 #### Instruction to run:
 ** Command: make **  
