@@ -4,5 +4,6 @@ public interface FileProcessorI {
     void readFile();
     int[] getProfit();
     int[] getWeights();
-    int capacity();
+    int getCapacity();
+    int getNumberOfItems();
 }
