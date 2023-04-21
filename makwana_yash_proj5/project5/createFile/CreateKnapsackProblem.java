@@ -1,8 +1,43 @@
 package project5.createFile;
 
+import java.io.FileWriter;
+import java.util.Random;
+
+import project5.utils.ExceptionHandler;
+
 public class CreateKnapsackProblem {
     public static void main(String[] args) {
-        
+        if (args.length < 1) {
+            ExceptionHandler.handleException(null, "Usage: java CreateKnapsackProblem <output_file.txt>");
+        }
+        String knapSackProblemFile = args[0];
+
+        int numberOfItems = randomValueGenerator(4, 8);
+        int totalWeight = 0;
+        int [] profit = new int [numberOfItems];
+        int [] weights = new int [numberOfItems];
+
+        for (int i = 0; i < numberOfItems; i++) {
+            profit[i] = randomValueGenerator(10, 30);
+            weights[i] = randomValueGenerator(5, 20);
+            totalWeight += weights[i];
+        }
+        int capacity = (int) (Math.floor(0.6 * totalWeight));
+        try {
+            FileWriter fileWriter = new FileWriter(knapSackProblemFile);
+            fileWriter.write(numberOfItems+" "+capacity+"\n");
+            for (int index = 0; index < numberOfItems; index++) {
+                fileWriter.write(String.format("Item%d  %d  %d\n", index+1, profit[index], weights[index]));
+            }
+            fileWriter.close();
+        } catch (Exception e) {
+            ExceptionHandler.handleException(e, "Error writing to file");
+        }
+    }  
+
+    private static int randomValueGenerator(int min, int max) {
+        Random random = new Random();
+        int randomValue = random.nextInt((max - min) + 1) + min;
+        return randomValue;
     }
-    
 }
