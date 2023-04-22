@@ -24,13 +24,14 @@ public class DynamicProgramming implements DynamicProgrammingI{
         profit = fileProcessor.getProfit();
         weights = fileProcessor.getWeights();
         capacity = fileProcessor.getCapacity();
-        B = new int[profit.length + 1][capacity + 1];
+        B = new int[numberOfItems + 1][capacity + 1];
     }
 
     @Override
     public void knapSackSolver() {
-        isIncluded = new boolean[profit.length + 1][capacity + 1];
-        for(int i = 1; i <= profit.length;i++){
+        isIncluded = new boolean[numberOfItems + 1][capacity + 1];
+        //int wt = 0;
+        for(int i = 1; i <= numberOfItems;i++){
             for(int w = 1; w <= capacity; w++){
                 if (weights[i-1] <= w) {
                     int includeItem = profit[i-1]+B[i-1][w-weights[i-1]];
@@ -38,6 +39,7 @@ public class DynamicProgramming implements DynamicProgrammingI{
                     if (includeItem > excludeItem) {
                         B[i][w] = includeItem;
                         isIncluded[i][w] = true;
+                        //wt += weights[i-1];
                     } else {
                         B[i][w] = excludeItem;
                     }
@@ -47,15 +49,15 @@ public class DynamicProgramming implements DynamicProgrammingI{
             }
         }
 
-        for (int i = 0; i <= profit.length; i++) {
+        for (int i = 0; i <= numberOfItems; i++) {
             for (int w = 0; w <= capacity; w++) {
                 stringBuilderEntries.append(B[i][w]).append("\t");
             }
             stringBuilderEntries.append("\n");
         }
-
-        stringBuilderOutput.append(profit.length).append(" ").append(B[profit.length][capacity]).append(" ").append(capacity).append("\n");
-        int i = profit.length;
+        //TODO Handle this weight printing
+        stringBuilderOutput.append(numberOfItems).append(" ").append(B[numberOfItems][capacity]).append(" ").append("").append("\n");
+        int i = numberOfItems;
         int w = capacity;
         while (i > 0 && w > 0) {
             if (isIncluded[i][w]) {
@@ -65,7 +67,6 @@ public class DynamicProgramming implements DynamicProgrammingI{
             i--;
         }
     }
-
     @Override
     public void writeToFile() {
         fileProcessor.writeToFile(stringBuilderEntries, "entries1.txt");
