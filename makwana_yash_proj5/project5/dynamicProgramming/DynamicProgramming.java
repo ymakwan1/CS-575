@@ -30,7 +30,7 @@ public class DynamicProgramming implements DynamicProgrammingI{
     @Override
     public void knapSackSolver() {
         isIncluded = new boolean[numberOfItems + 1][capacity + 1];
-        //int wt = 0;
+        int[][] W = new int[numberOfItems + 1][capacity + 1];
         for(int i = 1; i <= numberOfItems;i++){
             for(int w = 1; w <= capacity; w++){
                 if (weights[i-1] <= w) {
@@ -39,12 +39,14 @@ public class DynamicProgramming implements DynamicProgrammingI{
                     if (includeItem > excludeItem) {
                         B[i][w] = includeItem;
                         isIncluded[i][w] = true;
-                        //wt += weights[i-1];
+                        W[i][w] = W[i-1][w-weights[i-1]] + weights[i-1];
                     } else {
                         B[i][w] = excludeItem;
+                        W[i][w] = W[i-1][w];
                     }
                 } else {
                     B[i][w] = B[i-1][w];
+                    W[i][w] = W[i-1][w];
                 }
             }
         }
@@ -55,17 +57,19 @@ public class DynamicProgramming implements DynamicProgrammingI{
             }
             stringBuilderEntries.append("\n");
         }
-        //TODO Handle this weight printing
-        stringBuilderOutput.append(numberOfItems).append(" ").append(B[numberOfItems][capacity]).append(" ").append("").append("\n");
+        
+        int count = 0;
         int i = numberOfItems;
         int w = capacity;
         while (i > 0 && w > 0) {
             if (isIncluded[i][w]) {
                 stringBuilderOutput.append("Item").append(i).append(" ").append(profit[i - 1]).append(" ").append(weights[i - 1]).append("\n");
                 w -= weights[i - 1];
+                count++;
             }
             i--;
         }
+        stringBuilderOutput.insert(0, count+" "+B[numberOfItems][capacity]+" "+W[numberOfItems][capacity]+"\n");
     }
     @Override
     public void writeToFile() {
