@@ -9,8 +9,11 @@ public class BackTracking implements BackTrackingI {
     private int[] profit;
     private int[] weights;
     private int capacity;
-    private static int[] bestItems;
-    private static int bestProfit;
+    private int[] bestSet;
+    private int[] include;
+    private int nodeCounter;
+    private int maxProfit;
+    private int num;
     private StringBuilder stringBuilderOutput = new StringBuilder();
     private StringBuilder stringBuilderEntries = new StringBuilder();
 
@@ -25,63 +28,77 @@ public class BackTracking implements BackTrackingI {
         profit = fileProcessor.getProfit();
         weights = fileProcessor.getWeights();
         capacity = fileProcessor.getCapacity();
-        bestItems = new int[numberOfItems];
     }
 
-    private void knapsack(int iIn, int profitIn, int weightIn, int boundIn, int[] itemsIn){
-        if (weightIn <= capacity && profitIn > bestProfit) {
-            bestProfit = profitIn;
-            bestItems = itemsIn.clone();
-        }
-
-        if (iIn < numberOfItems){
-            int itemWeight = weights[iIn];
-            int itemProfit = profit[iIn];
-            int bound = bound(weightIn, profitIn, iIn+1);
-            if (bound > bestProfit) {
-                itemsIn[iIn] = 1;
-                knapsack(iIn+1, profitIn+itemProfit, weightIn+itemWeight, bound, itemsIn);
-                itemsIn[iIn] = 0;
-                int bound1 = bound(weightIn, profitIn, iIn + 1);
-                if (bound1 > bestProfit) {
-                    knapsack(iIn+1, profitIn, weightIn, bound1, itemsIn);
-                }
-            }
-        }
-        stringBuilderEntries.append(iIn).append(" ").append(profitIn).append(" ").append(weightIn).append(" ").append(boundIn).append("\n");
-    }
-
-    private int bound(int weightIn, int profitIn, int iIn){
+    private int KWF2(int i, int weight, int profitIn, int n, int W) {
         int bound = profitIn;
-        int remainingWeight = capacity - weightIn;
-        while (iIn < numberOfItems && weights[iIn] <= remainingWeight) {
-            remainingWeight -= weights[iIn];
-            bound += profit[iIn];
-            iIn++;
+        for (int j = i; j <= n; j++) {
+            include[j] = 0;
         }
-        if (iIn < numberOfItems) {
-            bound += remainingWeight * profit[iIn] / weights[iIn];
+        float sbx;
+        while (weight < W && i <= n) {
+            if (weight + weights[i-1] <= W) {
+                weight = weight + weights[i-1];
+                bound = bound + profit[i-1];
+            } else {
+                sbx = (float) (W - weight) / (float) weights[i-1];
+                weight = W;
+                bound = bound + (int) (profit[i-1] * sbx);
+            }
+            i += 1;
         }
         return bound;
     }
-    @Override
-    public void knapSackSolver() {
-        //int bound = bound(0, 0, 0);
-        knapsack(0, 0, 0, bound(0, 0, 0), new int[numberOfItems]);
-        int totalWeight = 0;
-        for (int i = 0; i < numberOfItems; i++) {
-            if (bestItems[i] == 1) {
-                totalWeight += weights[i];
-                stringBuilderOutput.append("Item ").append(i + 1).append(": weight = ").append(weights[i])
-                        .append(", profit = ").append(profit[i]).append("\n");
+
+    private boolean Promising(int i, int profit, int W, int weight, int n) {
+        if (weight >= W) {
+            return false;
+        }
+        int bound = KWF2(i + 1, weight, profit, n, W);
+        stringBuilderEntries.append(nodeCounter).append(" ").append(profit).append(" ").append(weight).append(" ").append(bound).append("\n");
+        nodeCounter++;
+        return (bound > maxProfit);
+    }
+
+    
+    private void knapsack(int i, int profitIn, int weight, int W, int n){
+        if (weight <= W && profitIn > maxProfit) {
+            maxProfit = profitIn;
+            num = i;
+            for (int j = 1; j <= n; j++) {
+                bestSet[j] = include[j];
             }
         }
+        if (Promising(i, profitIn, W, weight, n)) {
+            include[i + 1] = 1;
+            knapsack(i + 1, profitIn + profit[i], weight + weights[i], W, n);
+            include[i + 1] = 0;
+            knapsack(i + 1, profitIn, weight, W, n);
+        }
+    }
+
+    @Override
+    public void knapSackSolver() {
+        bestSet = new int[numberOfItems + 1];
+        maxProfit = 0;
+        include = new int[numberOfItems+1];
+        nodeCounter = 1;
+        knapsack(0, 0, 0, capacity, numberOfItems);
+        int totalWeight = 0;
+        int count = 0;
+        for (int i = 1; i <= num; i++) {
+            if (bestSet[i] == 1) {
+                totalWeight += weights[i-1];
+                count++;
+                stringBuilderOutput.append("Item" + i + profit[i-1] + " " + weights[i-1] + "\n");
+            }
+        }
+        stringBuilderOutput.insert(0, count + " " + maxProfit + " " + totalWeight + "\n");
     }
 
     @Override
     public void writeToFile() {
         fileProcessor.writeToFile(stringBuilderEntries, "entries2.txt");
         fileProcessor.writeToFile(stringBuilderOutput, "output3.txt");
-    }
-    
+    }   
 }
