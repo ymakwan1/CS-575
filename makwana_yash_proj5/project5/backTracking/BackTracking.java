@@ -1,5 +1,7 @@
 package project5.backTracking;
 
+import java.util.Arrays;
+
 import project5.fileProcessor.FileProcessorI;
 
 public class BackTracking implements BackTrackingI {
@@ -30,25 +32,44 @@ public class BackTracking implements BackTrackingI {
         capacity = fileProcessor.getCapacity();
     }
 
+    // private int KWF2(int i, int weight, int profitIn, int n, int W) {
+    //     int bound = profitIn;
+    //     for (int j = i; j <= n; j++) {
+    //         include[j] = 0;
+    //     }
+    //     float sbx;
+    //     while (weight < W && i <= n) {
+    //         if (weight + weights[i-1] <= W) {
+    //             weight = weight + weights[i-1];
+    //             bound = bound + profit[i-1];
+    //         } else {
+    //             sbx = (float) (W - weight) / (float) weights[i-1];
+    //             weight = W;
+    //             bound = bound + (int) (profit[i-1] * sbx);
+    //         }
+    //         i += 1;
+    //     }
+    //     return bound;
+    // }
     private int KWF2(int i, int weight, int profitIn, int n, int W) {
         int bound = profitIn;
-        for (int j = i; j <= n; j++) {
-            include[j] = 0;
-        }
         float sbx;
         while (weight < W && i <= n) {
             if (weight + weights[i-1] <= W) {
                 weight = weight + weights[i-1];
                 bound = bound + profit[i-1];
+                include[i] = 1;
             } else {
                 sbx = (float) (W - weight) / (float) weights[i-1];
                 weight = W;
                 bound = bound + (int) (profit[i-1] * sbx);
+                include[i] = (int) sbx;
             }
             i += 1;
         }
         return bound;
     }
+    
 
     private boolean Promising(int i, int profit, int W, int weight, int n) {
         if (weight >= W) {
@@ -83,6 +104,7 @@ public class BackTracking implements BackTrackingI {
         maxProfit = 0;
         include = new int[numberOfItems+1];
         nodeCounter = 1;
+        Arrays.fill(include, 0);
         knapsack(0, 0, 0, capacity, numberOfItems);
         int totalWeight = 0;
         int count = 0;
@@ -90,7 +112,7 @@ public class BackTracking implements BackTrackingI {
             if (bestSet[i] == 1) {
                 totalWeight += weights[i-1];
                 count++;
-                stringBuilderOutput.append("Item" + i + profit[i-1] + " " + weights[i-1] + "\n");
+                stringBuilderOutput.append("Item" + i +" "+ profit[i-1] + " " + weights[i-1] + "\n");
             }
         }
         stringBuilderOutput.insert(0, count + " " + maxProfit + " " + totalWeight + "\n");
