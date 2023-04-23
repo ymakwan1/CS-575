@@ -14,7 +14,7 @@
 
  #### Instruction to Create Knapsack Problem:
  ##### In place of knapsack01.txt you can use any name, but then make sure to use that file name for all other algorithm inputs as well.
-    java project5/createFile/CreateKnapsackProblem knapsack01.txt
+    java project5/createFile/CreateKP knapsack01.txt
  #### Run the desired algorithm by executing the corresponding driver class file <br>
   ##### To run the Brute Force algorithm, use the following command:
      java project5/bruteForce/BruteForceDriver knapsack01.txt

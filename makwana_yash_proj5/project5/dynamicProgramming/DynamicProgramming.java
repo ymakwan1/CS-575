@@ -73,7 +73,7 @@ public class DynamicProgramming implements DynamicProgrammingI{
     }
     @Override
     public void writeToFile() {
-        fileProcessor.writeToFile(stringBuilderEntries, "entries1.txt");
+        fileProcessor.writeToFile(stringBuilderEntries, "entries2.txt");
         fileProcessor.writeToFile(stringBuilderOutput, "output2.txt");
     }
 }

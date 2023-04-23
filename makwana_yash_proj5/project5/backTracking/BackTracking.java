@@ -30,6 +30,19 @@ public class BackTracking implements BackTrackingI {
         profit = fileProcessor.getProfit();
         weights = fileProcessor.getWeights();
         capacity = fileProcessor.getCapacity();
+        Integer[] items = new Integer[numberOfItems];
+        for (int i = 0; i < numberOfItems; i++) {
+            items[i] = i;
+        }
+        Arrays.sort(items, (a, b) -> Double.compare((double) profit[b] / weights[b], (double) profit[a] / weights[a]));
+        int[] newProfit = new int[numberOfItems];
+        int[] newWeights = new int[numberOfItems];
+        for (int i = 0; i < numberOfItems; i++) {
+            newProfit[i] = profit[items[i]];
+            newWeights[i] = weights[items[i]];
+        }
+        profit = newProfit;
+        weights = newWeights;
     }
 
     // private int KWF2(int i, int weight, int profitIn, int n, int W) {
@@ -51,8 +64,8 @@ public class BackTracking implements BackTrackingI {
     //     }
     //     return bound;
     // }
-    private int KWF2(int i, int weight, int profitIn, int n, int W) {
-        int bound = profitIn;
+    private float KWF2(int i, int weight, int profitIn, int n, int W) {
+        float bound = profitIn;
         float sbx;
         while (weight < W && i <= n) {
             if (weight + weights[i-1] <= W) {
@@ -75,7 +88,7 @@ public class BackTracking implements BackTrackingI {
         if (weight >= W) {
             return false;
         }
-        int bound = KWF2(i + 1, weight, profit, n, W);
+        float bound = KWF2(i+1, weight, profit, n, W);
         stringBuilderEntries.append(nodeCounter).append(" ").append(profit).append(" ").append(weight).append(" ").append(bound).append("\n");
         nodeCounter++;
         return (bound > maxProfit);
@@ -120,7 +133,7 @@ public class BackTracking implements BackTrackingI {
 
     @Override
     public void writeToFile() {
-        fileProcessor.writeToFile(stringBuilderEntries, "entries2.txt");
+        fileProcessor.writeToFile(stringBuilderEntries, "entries3.txt");
         fileProcessor.writeToFile(stringBuilderOutput, "output3.txt");
     }   
 }
