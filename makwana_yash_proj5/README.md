@@ -19,4 +19,4 @@
 
 ## Run the desired algorithm by executing the corresponding driver class file <br>
  ### To run the Brute Force algorithm, use the following command:
- **java project5/bruteForce/BruteForceDriver knapsack01.txt**
+    **java project5/bruteForce/BruteForceDriver knapsack01.txt**
