@@ -30,11 +30,16 @@ public class BackTracking implements BackTrackingI {
         profit = fileProcessor.getProfit();
         weights = fileProcessor.getWeights();
         capacity = fileProcessor.getCapacity();
+        sortItemsByProfitPerWeight();
+    }
+
+    private void sortItemsByProfitPerWeight() {
         Integer[] items = new Integer[numberOfItems];
         for (int i = 0; i < numberOfItems; i++) {
             items[i] = i;
         }
         Arrays.sort(items, (a, b) -> Double.compare((double) profit[b] / weights[b], (double) profit[a] / weights[a]));
+
         int[] newProfit = new int[numberOfItems];
         int[] newWeights = new int[numberOfItems];
         for (int i = 0; i < numberOfItems; i++) {
@@ -45,25 +50,6 @@ public class BackTracking implements BackTrackingI {
         weights = newWeights;
     }
 
-    // private int KWF2(int i, int weight, int profitIn, int n, int W) {
-    //     int bound = profitIn;
-    //     for (int j = i; j <= n; j++) {
-    //         include[j] = 0;
-    //     }
-    //     float sbx;
-    //     while (weight < W && i <= n) {
-    //         if (weight + weights[i-1] <= W) {
-    //             weight = weight + weights[i-1];
-    //             bound = bound + profit[i-1];
-    //         } else {
-    //             sbx = (float) (W - weight) / (float) weights[i-1];
-    //             weight = W;
-    //             bound = bound + (int) (profit[i-1] * sbx);
-    //         }
-    //         i += 1;
-    //     }
-    //     return bound;
-    // }
     private float KWF2(int i, int weight, int profitIn, int n, int W) {
         float bound = profitIn;
         float sbx;
