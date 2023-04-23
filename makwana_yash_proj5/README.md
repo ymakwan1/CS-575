@@ -18,5 +18,5 @@
  Description: On the running the ** make clean ** command, it cleans all the class files. <br>
 
 ## Run the desired algorithm by executing the corresponding driver class file <br>
- ## To run the Brute Force algorithm, use the following command:
+ ### To run the Brute Force algorithm, use the following command:
  **java project5/bruteForce/BruteForceDriver knapsack01.txt**
