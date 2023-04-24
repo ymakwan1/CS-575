@@ -5,6 +5,9 @@ import java.util.Random;
 
 import project5.utils.ExceptionHandler;
 
+/**
+ * The CreateKP class generates a random Knapsack problem and writes it to a file.
+ */
 public class CreateKP {
     public static void main(String[] args) {
         if (args.length < 1) {
@@ -40,6 +43,14 @@ public class CreateKP {
         }
     }  
 
+    /**
+     * The function generates a random integer value within a given range.
+     * 
+     * @param min The minimum value that the random number can take.
+     * @param max The maximum value that the random number generator can generate.
+     * @return The method `randomValueGenerator` returns an integer value that is randomly generated
+     * between the `min` and `max` values (inclusive).
+     */
     private static int randomValueGenerator(int min, int max) {
         Random random = new Random();
         int randomValue = random.nextInt((max - min) + 1) + min;

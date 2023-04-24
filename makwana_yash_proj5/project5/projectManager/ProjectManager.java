@@ -9,6 +9,10 @@ import project5.dynamicProgramming.DynamicProgrammingI;
 import project5.fileProcessor.FileProcessor;
 import project5.fileProcessor.FileProcessorI;
 
+/**
+ * The ProjectManager class implements ProjectManagerI and runs different algorithms to solve the
+ * knapsack problem and write the results to a file.
+ */
 public class ProjectManager implements ProjectManagerI{
 
     private String filePath;
@@ -18,6 +22,9 @@ public class ProjectManager implements ProjectManagerI{
         fileProcessor = new FileProcessor(filePath);
     }
 
+    /**
+     * This function runs a brute force algorithm to solve the knapsack problem using a file processor.
+     */
     @Override
     public void runBruteForce() {
         BruteForceI bruteForce = new BruteForce(fileProcessor);
@@ -26,6 +33,10 @@ public class ProjectManager implements ProjectManagerI{
         bruteForce.writeToFile();
     }
 
+    /**
+     * This function runs a dynamic programming algorithm to solve the knapsack problem and writes the
+     * results to a file.
+     */
     @Override
     public void runDynamicProgramming() {
         DynamicProgrammingI dynamicProgramming = new DynamicProgramming(fileProcessor);
@@ -34,6 +45,10 @@ public class ProjectManager implements ProjectManagerI{
         dynamicProgramming.writeToFile();
     }
 
+    /**
+     * This function runs a knapsack solver using backtracking algorithm and writes the result to a
+     * file.
+     */
     @Override
     public void runBackTracking() {
         BackTrackingI backTracking = new BackTracking(fileProcessor);

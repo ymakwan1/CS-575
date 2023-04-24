@@ -7,6 +7,10 @@ import java.io.FileWriter;
 
 import project5.utils.ExceptionHandler;
 
+/**
+ * The FileProcessor class reads and processes a file containing information about items, their
+ * weights, and profits, and stores the data in arrays.
+ */
 public class FileProcessor implements FileProcessorI{
 
     private int numberOfItems;
@@ -18,6 +22,10 @@ public class FileProcessor implements FileProcessorI{
         filePath = filePathIn;
     }
 
+    /**
+     * This function reads a file containing information about items, their weights, and profits, and
+     * stores the data in arrays.
+     */
     @Override
     public void readFile() {
         try {
@@ -43,26 +51,54 @@ public class FileProcessor implements FileProcessorI{
     }
 
 
+    /**
+     * The function returns an integer array of profits.
+     * 
+     * @return An integer array named "profit" is being returned.
+     */
     @Override
     public int[] getProfit() {
         return profit;
     }
 
+    /**
+     * The function returns an array of integers representing weights.
+     * 
+     * @return An integer array called "weights" is being returned.
+     */
     @Override
     public int[] getWeights() {
         return weights;
     }
 
+    /**
+     * The function returns the capacity of an object.
+     * 
+     * @return The method is returning the value of the variable "capacity".
+     */
     @Override
     public int getCapacity() {
         return capacity;
     }
 
+    /**
+     * This function returns the number of items.
+     * 
+     * @return The method is returning the value of the variable `numberOfItems`.
+     */
     @Override
     public int getNumberOfItems() {
      return numberOfItems;
     }
 
+    /**
+     * This function writes the contents of a StringBuilder object to a file specified by the
+     * outputFileIn parameter.
+     * 
+     * @param stringBuilderIn A StringBuilder object that contains the data to be written to the file.
+     * @param outputFileIn The parameter "outputFileIn" is a String variable that represents the file
+     * path and name of the output file where the contents of the StringBuilder object will be written.
+     */
     @Override
     public void writeToFile(StringBuilder stringBuilderIn, String outputFileIn) {
         try {

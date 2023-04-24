@@ -6,6 +6,9 @@ import project5.projectManager.ProjectManager;
 import project5.projectManager.ProjectManagerI;
 import project5.utils.ExceptionHandler;
 
+/**
+ * This is a Java class that runs a brute force algorithm to solve the knapsack problem.
+ */
 public class BruteForceDriver {
     public static void main(String[] args) {
         if (args.length < 1) {

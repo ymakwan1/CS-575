@@ -2,6 +2,10 @@ package project5.bruteForce;
 
 import project5.fileProcessor.FileProcessorI;
 
+/**
+ * The BruteForce class implements the BruteForceI interface to solve the knapsack problem using a
+ * brute force approach and writes the output to a file.
+ */
 public class BruteForce implements BruteForceI{
 
     private FileProcessorI fileProcessor;
@@ -14,6 +18,9 @@ public class BruteForce implements BruteForceI{
         fileProcessor = fileProcessorIn;
     }
 
+    /**
+     * This function initializes variables by reading data from a file using a file processor object.
+     */
     @Override
     public void initializeFile() {
         fileProcessor.readFile();
@@ -23,6 +30,10 @@ public class BruteForce implements BruteForceI{
         capacity = fileProcessor.getCapacity();
     }
 
+    /**
+     * The function solves the knapsack problem using a brute force approach and returns the maximum
+     * profit, weight, and items selected.
+     */
     @Override
     public void knapSackSolver() {
         int maxProfit = 0;
@@ -53,6 +64,10 @@ public class BruteForce implements BruteForceI{
         }
     }
 
+    /**
+     * This function writes the contents of a StringBuilder object to a file named "output1.txt" using
+     * a file processor.
+     */
     @Override
     public void writeToFile() {
         fileProcessor.writeToFile(stringBuilder, "output1.txt");

@@ -17,6 +17,10 @@ public class DynamicProgramming implements DynamicProgrammingI{
         fileProcessor = fileProcessorIn;
     }
 
+    /**
+     * This function initializes variables and arrays needed for solving the knapsack problem by
+     * reading data from a file.
+     */
     @Override
     public void initializeFile() {
         fileProcessor.readFile();
@@ -27,6 +31,10 @@ public class DynamicProgramming implements DynamicProgrammingI{
         B = new int[numberOfItems + 1][capacity + 1];
     }
 
+    /**
+     * This is a Java function that solves the knapsack problem using dynamic programming and outputs the
+     * optimal solution.
+     */
     @Override
     public void knapSackSolver() {
         isIncluded = new boolean[numberOfItems + 1][capacity + 1];
@@ -71,6 +79,10 @@ public class DynamicProgramming implements DynamicProgrammingI{
         }
         stringBuilderOutput.insert(0, count+" "+B[numberOfItems][capacity]+" "+W[numberOfItems][capacity]+"\n");
     }
+
+   /**
+    * The function writes two string builders to two separate files.
+    */
     @Override
     public void writeToFile() {
         fileProcessor.writeToFile(stringBuilderEntries, "entries2.txt");

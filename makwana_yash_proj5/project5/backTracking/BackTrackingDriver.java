@@ -6,6 +6,9 @@ import project5.projectManager.ProjectManager;
 import project5.projectManager.ProjectManagerI;
 import project5.utils.ExceptionHandler;
 
+/**
+ * This Java class runs a backtracking algorithm on a knapsack problem specified in a text file.
+ */
 public class BackTrackingDriver {
     public static void main(String[] args) {
         if (args.length < 1) {
