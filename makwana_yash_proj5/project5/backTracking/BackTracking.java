@@ -16,6 +16,7 @@ public class BackTracking implements BackTrackingI {
     private int nodeCounter;
     private int maxProfit;
     private int num;
+    float boundG = 0;
     private StringBuilder stringBuilderOutput = new StringBuilder();
     private StringBuilder stringBuilderEntries = new StringBuilder();
 
@@ -71,17 +72,21 @@ public class BackTracking implements BackTrackingI {
     
 
     private boolean Promising(int i, int profit, int W, int weight, int n) {
+        boundG = profit;
         if (weight >= W) {
             return false;
         }
         float bound = KWF2(i+1, weight, profit, n, W);
-        stringBuilderEntries.append(nodeCounter).append(" ").append(profit).append(" ").append(weight).append(" ").append(bound).append("\n");
-        nodeCounter++;
+        boundG = bound;
+        // stringBuilderEntries.append(nodeCounter).append(" ").append(profit).append(" ").append(weight).append(" ").append(bound).append("\n");
+        // nodeCounter++;
         return (bound > maxProfit);
     }
 
     
     private void knapsack(int i, int profitIn, int weight, int W, int n){
+        stringBuilderEntries.append(nodeCounter).append(" ").append(profitIn).append(" ").append(weight).append(" ").append(boundG).append("\n");
+        nodeCounter++;
         if (weight <= W && profitIn > maxProfit) {
             maxProfit = profitIn;
             num = i;
