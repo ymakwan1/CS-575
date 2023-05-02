@@ -1,6 +1,7 @@
 package project5.backTracking;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 import project5.fileProcessor.FileProcessorI;
 
@@ -23,7 +24,7 @@ public class BackTracking implements BackTrackingI {
     private float boundG = 0;
     private StringBuilder stringBuilderOutput = new StringBuilder();
     private StringBuilder stringBuilderEntries = new StringBuilder();
-
+    private HashMap<String, Integer> map;
     public BackTracking(FileProcessorI fileProcessorIn){
         fileProcessor = fileProcessorIn;
     }
@@ -39,6 +40,12 @@ public class BackTracking implements BackTrackingI {
         profit = fileProcessor.getProfit();
         weights = fileProcessor.getWeights();
         capacity = fileProcessor.getCapacity();
+        map = new HashMap<>();
+        for (int i = 0; i < weights.length; i++) {
+            String k = "Item"+(i+1);
+            int val = weights[i]+profit[i];
+            map.put(k, val);
+        }
         sortItemsByProfitPerWeight();
     }
 
@@ -162,12 +169,22 @@ public class BackTracking implements BackTrackingI {
             if (bestSet[i] == 1) {
                 totalWeight += weights[i-1];
                 count++;
-                stringBuilderOutput.append("Item" + i +" "+ profit[i-1] + " " + weights[i-1] + "\n");
+                String k = getKeyByValue(map, (weights[i-1]+profit[i-1]));
+                //stringBuilderOutput.append("Item" + i +" "+ profit[i-1] + " " + weights[i-1] + "\n");
+                stringBuilderOutput.append(k +" "+ profit[i-1] + " " + weights[i-1] + "\n");
             }
         }
         stringBuilderOutput.insert(0, count + " " + maxProfit + " " + totalWeight + "\n");
     }
-
+    private <K, V> K getKeyByValue(HashMap<K, V> map, V value) {
+        for (HashMap.Entry<K, V> entry : map.entrySet()) {
+            if (value.equals(entry.getValue())) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+    
     /**
      * The function writes two string builders to two separate files.
      */
