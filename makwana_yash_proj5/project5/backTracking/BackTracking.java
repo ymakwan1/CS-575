@@ -88,12 +88,12 @@ public class BackTracking implements BackTrackingI {
             if (weight + weights[i-1] <= W) {
                 weight = weight + weights[i-1];
                 bound = bound + profit[i-1];
-                include[i] = 1;
+                //include[i] = 1;
             } else {
                 sbx = (float) (W - weight) / (float) weights[i-1];
                 weight = W;
-                bound = bound + (int) (profit[i-1] * sbx);
-                include[i] = (int) sbx;
+                bound = bound +  (profit[i-1] * sbx);
+                //include[i] =  sbx;
             }
             i += 1;
         }
@@ -113,7 +113,7 @@ public class BackTracking implements BackTrackingI {
      * @return The method is returning a boolean value.
      */
     private boolean Promising(int i, int profit, int W, int weight, int n) {
-        boundG = profit;
+       // boundG = profit;
         if (weight >= W) {
             return false;
         }
@@ -133,9 +133,9 @@ public class BackTracking implements BackTrackingI {
      * @param W The maximum weight capacity of the knapsack.
      * @param n The number of items available for selection in the knapsack problem.
      */
-    private void knapsack(int i, int profitIn, int weight, int W, int n){
-        stringBuilderEntries.append(nodeCounter).append(" ").append(profitIn).append(" ").append(weight).append(" ").append(boundG).append("\n");
-        nodeCounter++;
+    private void knapsack(int i, int profitIn, int weight, int W, int n, int indexIn){
+        // stringBuilderEntries.append(nodeCounter).append(" ").append(profitIn).append(" ").append(weight).append(" ").append(boundG).append("\n");
+        // nodeCounter++;
         if (weight <= W && profitIn > maxProfit) {
             maxProfit = profitIn;
             num = i;
@@ -143,11 +143,15 @@ public class BackTracking implements BackTrackingI {
                 bestSet[j] = include[j];
             }
         }
-        if (Promising(i, profitIn, W, weight, n)) {
+        boolean isPromising = Promising(i, profitIn, W, weight, n);
+        stringBuilderEntries.append(nodeCounter).append(" ").append(indexIn).append(" ").append(profitIn).append(" ").append(weight).append(" ").append(boundG).append("\n");
+        nodeCounter++;
+        indexIn++;
+        if (isPromising) {
             include[i + 1] = 1;
-            knapsack(i + 1, profitIn + profit[i], weight + weights[i], W, n);
+            knapsack(i + 1, profitIn + profit[i], weight + weights[i], W, n, indexIn);
             include[i + 1] = 0;
-            knapsack(i + 1, profitIn, weight, W, n);
+            knapsack(i + 1, profitIn, weight, W, n, indexIn);
         }
     }
 
@@ -162,7 +166,7 @@ public class BackTracking implements BackTrackingI {
         include = new int[numberOfItems+1];
         nodeCounter = 1;
         Arrays.fill(include, 0);
-        knapsack(0, 0, 0, capacity, numberOfItems);
+        knapsack(0, 0, 0, capacity, numberOfItems, 0);
         int totalWeight = 0;
         int count = 0;
         for (int i = 1; i <= num; i++) {
