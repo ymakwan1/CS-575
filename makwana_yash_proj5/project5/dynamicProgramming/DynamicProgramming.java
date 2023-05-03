@@ -31,27 +31,32 @@ public class DynamicProgramming implements DynamicProgrammingI{
         B = new int[numberOfItems + 1][capacity + 1];
     }
 
-    private void query(int n, int w){
-        // if (numberOfItemsIn <= 0 || capacityIn <= 0) {
-        //     return;
-        // }
-        // isIncluded[numberOfItemsIn][capacityIn] = true;
-        // query(capacityIn, numberOfItemsIn-1);
-        // query(capacityIn - weights[capacityIn-1], numberOfItemsIn-1);
+    /**
+     * This function computes the positions of a matrix based on given parameters using recursion.
+     * 
+     * @param n The number of items to be considered for inclusion in the knapsack problem.
+     * @param w w is the maximum weight capacity of a knapsack. The function is likely being used to
+     * compute the positions in a matrix that represent whether or not an item is included in the
+     * knapsack based on its weight and value.
+     */
+    private void computeMatrixPositions(int n, int w){
         if(n<=0 || w<=0)
         {
             return;
         }
-        //compute[n][w] = 1;
         isIncluded[n][w] = true;
-        query(n-1, w);
-        query(n-1, w-weights[n-1]);
+        computeMatrixPositions(n-1, w);
+        computeMatrixPositions(n-1, w-weights[n-1]);
     }
 
+    /**
+     * The function implements the dynamic programming solution to the 0/1 Knapsack problem and outputs
+     * the optimal solution.
+     */
     @Override
     public void knapSackSolver() {
         isIncluded = new boolean[numberOfItems + 1][capacity + 1];
-        query(numberOfItems, capacity);
+        computeMatrixPositions(numberOfItems, capacity);
         int[][] W = new int[numberOfItems + 1][capacity + 1];
         for(int i = 1; i <= numberOfItems;i++){
             B[i][0] =0;
@@ -92,23 +97,6 @@ public class DynamicProgramming implements DynamicProgrammingI{
             i--;
         }
         stringBuilderOutput.insert(0, count+" "+B[numberOfItems][capacity]+" "+W[numberOfItems][capacity]+"\n");
-        // int res = B[numberOfItems][capacity];
-        // int profits = res;
-
-        // int w = capacity;
-        // for (int i = numberOfItems; i > 0 && res > 0; i--) {
-        //     if (res == B[i - 1][w])
-        //         continue;
-        //     else {
-        //         //output.add(input.get(i - 1));
-        //         //totalSum = totalSum + input.get(i - 1).weight;
-        //         res = res - profit[i-1];
-        //         w = w - weights[i-1];
-        //         stringBuilderOutput.append("Item").append(i).append(" ").append(profit[i - 1]).append(" ").append(weights[i - 1]).append("\n");
-        //         count++;
-        //     }
-        // }
-        // stringBuilderOutput.insert(0, count+" "+B[numberOfItems][capacity]+" "+W[numberOfItems][capacity]+"\n");
     }
 
    /**

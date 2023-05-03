@@ -25,13 +25,13 @@ public class BackTracking implements BackTrackingI {
     private StringBuilder stringBuilderOutput = new StringBuilder();
     private StringBuilder stringBuilderEntries = new StringBuilder();
     private HashMap<String, Integer> map;
+
     public BackTracking(FileProcessorI fileProcessorIn){
         fileProcessor = fileProcessorIn;
     }
 
     /**
-     * This function initializes the file by reading it, getting the number of items, profit, weights,
-     * capacity, and sorting the items by profit per weight.
+     * The function initializes variables and creates a HashMap to store item weights and profits.
      */
     @Override
     public void initializeFile() {
@@ -180,6 +180,16 @@ public class BackTracking implements BackTrackingI {
         }
         stringBuilderOutput.insert(0, count + " " + maxProfit + " " + totalWeight + "\n");
     }
+    
+    /**
+     * This Java function returns the key of a given value in a HashMap.
+     * 
+     * @param map A HashMap with keys of type K and values of type V.
+     * @param value The value parameter is the value that we want to find the corresponding key for in
+     * the HashMap.
+     * @return The method is returning a key of type K from the given HashMap that matches the given
+     * value of type V. If no such key is found, it returns null.
+     */
     private <K, V> K getKeyByValue(HashMap<K, V> map, V value) {
         for (HashMap.Entry<K, V> entry : map.entrySet()) {
             if (value.equals(entry.getValue())) {
