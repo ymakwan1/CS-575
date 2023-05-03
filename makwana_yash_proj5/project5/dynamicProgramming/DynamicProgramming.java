@@ -47,48 +47,6 @@ public class DynamicProgramming implements DynamicProgrammingI{
         query(n-1, w);
         query(n-1, w-weights[n-1]);
     }
-    /**
-     * This is a Java function that solves the knapsack problem using dynamic programming and outputs the
-     * optimal solution.
-     */
-//     @Override
-// public void knapSackSolver() {
-//     isIncluded = new boolean[numberOfItems + 1][capacity + 1];
-//     int[][] W = new int[numberOfItems + 1][capacity + 1];
-//     for(int i = 1; i <= numberOfItems;i++){
-//         int wi = weights[i-1];
-//         for(int w = capacity; w >= wi; w--){
-//             if (B[i-1][w-wi] + profit[i-1] > B[i-1][w]) {
-//                 B[i][w] = B[i - 1][w - wi] + profit[i-1];
-//                 W[i][w] = W[i-1][w-wi] + wi;
-//                 isIncluded[i][w] = true;
-//             } else {
-//                 B[i][w] = B[i-1][w];
-//                 W[i][w] = W[i-1][w];
-//             }
-//         }
-//     }
-
-//     for (int i = 0; i <= numberOfItems; i++) {
-//         for (int w = 0; w <= capacity; w++) {
-//             stringBuilderEntries.append(B[i][w]).append("\t");
-//         }
-//         stringBuilderEntries.append("\n");
-//     }
-
-//     int count = 0;
-//     int i = numberOfItems;
-//     int w = capacity;
-//     while (i > 0 && w > 0) {
-//         if (isIncluded[i][w]) {
-//             stringBuilderOutput.append("Item").append(i).append(" ").append(profit[i - 1]).append(" ").append(weights[i - 1]).append("\n");
-//             w -= weights[i - 1];
-//             count++;
-//         }
-//         i--;
-//     }
-//     stringBuilderOutput.insert(0, count+" "+B[numberOfItems][capacity]+" "+W[numberOfItems][capacity]+"\n");
-// }
 
     @Override
     public void knapSackSolver() {
@@ -123,15 +81,34 @@ public class DynamicProgramming implements DynamicProgrammingI{
         int count = 0;
         int i = numberOfItems;
         int w = capacity;
+        int max = B[numberOfItems][capacity];
         while (i > 0 && w > 0) {
-            if (isIncluded[i][w]) {
+            if (!(max == B[i-1][w])) {
                 stringBuilderOutput.append("Item").append(i).append(" ").append(profit[i - 1]).append(" ").append(weights[i - 1]).append("\n");
                 w -= weights[i - 1];
+                max = max -profit[i-1];
                 count++;
             }
             i--;
         }
         stringBuilderOutput.insert(0, count+" "+B[numberOfItems][capacity]+" "+W[numberOfItems][capacity]+"\n");
+        // int res = B[numberOfItems][capacity];
+        // int profits = res;
+
+        // int w = capacity;
+        // for (int i = numberOfItems; i > 0 && res > 0; i--) {
+        //     if (res == B[i - 1][w])
+        //         continue;
+        //     else {
+        //         //output.add(input.get(i - 1));
+        //         //totalSum = totalSum + input.get(i - 1).weight;
+        //         res = res - profit[i-1];
+        //         w = w - weights[i-1];
+        //         stringBuilderOutput.append("Item").append(i).append(" ").append(profit[i - 1]).append(" ").append(weights[i - 1]).append("\n");
+        //         count++;
+        //     }
+        // }
+        // stringBuilderOutput.insert(0, count+" "+B[numberOfItems][capacity]+" "+W[numberOfItems][capacity]+"\n");
     }
 
    /**
