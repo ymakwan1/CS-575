@@ -11,7 +11,7 @@ import project5.utils.ExceptionHandler;
 public class CreateKP {
     public static void main(String[] args) {
         if (args.length < 1) {
-            ExceptionHandler.handleException(null, "Usage: java project5/createFile/CreateKP <output_file.txt>");
+            ExceptionHandler.handleException(null, "Usage: java project5/createFile/CreateKP knapsack01.txt");
         }
         String knapSackProblemFile = args[0];
 
