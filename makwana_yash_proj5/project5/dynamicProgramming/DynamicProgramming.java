@@ -78,7 +78,7 @@ public class DynamicProgramming implements DynamicProgrammingI{
 
         for (int i = 0; i <= numberOfItems; i++) {
             for (int w = 0; w <= capacity; w++) {
-                stringBuilderEntries.append(B[i][w]).append("\t");
+                stringBuilderEntries.append(B[i][w]).append(" ");
             }
             stringBuilderEntries.append("\n");
         }
