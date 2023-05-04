@@ -5,4 +5,4 @@ run: clean
 	javac project5/createFile/CreateKP.java
 clean: 
 	rm -f project5/*/*.class
-	rm -f project5/*.txt
+	rm -f ./*.txt
