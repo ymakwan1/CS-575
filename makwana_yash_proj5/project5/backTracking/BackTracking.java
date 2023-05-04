@@ -144,7 +144,7 @@ public class BackTracking implements BackTrackingI {
             }
         }
         boolean isPromising = Promising(i, profitIn, W, weight, n);
-        stringBuilderEntries.append(nodeCounter).append(" ").append(indexIn).append(" ").append(profitIn).append(" ").append(weight).append(" ").append(boundG).append("\n");
+        stringBuilderEntries.append(nodeCounter)/*.append(" ").append(indexIn).*/.append(" ").append(profitIn).append(" ").append(weight).append(" ").append(boundG).append("\n");
         nodeCounter++;
         indexIn++;
         if (isPromising) {
